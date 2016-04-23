@@ -1,0 +1,40 @@
+
+TODO@mattbill
+- New Github repo
+    - Make
+    - Clone
+    - Add Abbey as contributor to repo
+- Python
+    - Check python version
+    - Update if necessary
+    - Create virtualenv
+    - pip install flask
+    - export virtualenv to requirements.txt
+- New Intellij project
+    - Use Python plugin
+    - Point to virtualenv python
+    - Ensure debug works
+- App skeleton
+    - Flask
+        - static/
+        - send index.html
+    - npm
+        - bower
+    - bower
+        - put bower in static
+        - add dependencies
+
+- Recreate v002 of app
+    - Use api endpoints that return static JSON
+        - analysis
+        - table
+        - automate
+    - Flask
+        - Use module based organization
+    - Misc
+        - I got rid of sugar.js dependency. Make sure it still works
+        - Grunt
+
+
+
+

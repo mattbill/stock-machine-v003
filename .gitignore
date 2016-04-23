@@ -1,0 +1,17 @@
+
+# PROJECT
+/node_modules
+/static/bower_components
+/temp
+/venv
+*.log
+
+
+
+# IDE
+/.idea
+*.iml
+
+
+# Operating system
+.DS_Store
