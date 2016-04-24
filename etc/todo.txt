@@ -1,5 +1,5 @@
 
-TODO@mattbill
+2016-04-23
 - New Github repo
     - Make
     - Clone
@@ -23,18 +23,27 @@ TODO@mattbill
     - bower
         - put bower in static
         - add dependencies
-
+- Clean up v002
+    - Replace sugar.js with lodash
+    - Rename JS and CSS files to use dashes
+    - Rename CSS IDs and classes to use dashes
+    - Separate filters into multiple files
+    - Misc clean up
 - Recreate v002 of app
+    - Angular SPA
+        - Angular routes and views
     - Use api endpoints that return static JSON
         - analysis
+            - get-stock-from-db
+            - redo-calcs
         - table
+            - search-data-table
         - automate
-    - Flask
-        - Use module based organization
-    - Misc
-        - I got rid of sugar.js dependency. Make sure it still works
-        - Grunt
+            - automate-next-stock
 
 
+TODO@mattbill
+- Flask
+    - Use module based organization
 
 
