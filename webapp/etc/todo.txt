@@ -41,11 +41,13 @@
         - automate
             - automate-next-stock
 
+2016-04-24
+- Flask
+    - Organize app into modules according to best practices
+
 
 TODO@mattbill
 - Assess Quandl
     - Compare data provided with what we need
-- Flask
-    - Use module based organization
 
 

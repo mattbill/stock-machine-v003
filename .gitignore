@@ -1,10 +1,12 @@
 
 # PROJECT
-/venv
-/webapp/node_modules
-/webapp/static/bower_components
+bower_components
+node_modules
+venv
+
 /webapp/temp
 /webapp/*.log
+*.pyc
 
 
 
