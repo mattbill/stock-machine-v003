@@ -43,6 +43,8 @@
 
 
 TODO@mattbill
+- Assess Quandl
+    - Compare data provided with what we need
 - Flask
     - Use module based organization
 
