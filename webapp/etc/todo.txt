@@ -45,9 +45,35 @@
 - Flask
     - Organize app into modules according to best practices
 
+2016-05-05
+- Fix SQLite install
+
+2016-05-07
+- Use SQLite DB from StockMachine v002
+    - Database
+        - Connect app to DB
+        - Init and fill DB if not present
+    - Data XHR calls
+        - Get stock
+        - Search dataTable
+
 
 TODO@mattbill
-- Assess Quandl
-    - Compare data provided with what we need
+
+
+
+
+- Later
+    - Redo calcs
+    - Automate
+- Clean up
+    - Consider moving static and maybe templates up one directory like MEAN stack structure
+    - Update URLs to follow REST standards
+- Quandl
+    - Assess Quandl and ompare data provided with what we need
+    - Query Quandl API
+    - Switch back to getting fresh data rather than pulling stock from DB
+- Visual design
+    - Bootswatch skin
 
 
