@@ -1,6 +1,6 @@
 # stock-machine-v003
 
-### Run Application:s
+### Run Application:
 - `sudo easy_install virtualenv`
 - `virtualenv venv`
 - `source venv/bin/activate`
