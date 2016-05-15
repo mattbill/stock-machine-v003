@@ -57,12 +57,12 @@ class ModelHelper:
             db = ModelHelper.connect_db()
 
             schema = os.path.join(app.app.root_path, '../data/stocks.db')
-            with app.open_resource(schema, mode='r') as f:
+            with app.app.open_resource(schema, mode='r') as f:
                 db.cursor().executescript(f.read())
             db.commit()
 
             data = os.path.join(app.app.root_path, '../data/stocks.db')
-            with app.open_resource(data, mode='r') as f:
+            with app.app.open_resource(data, mode='r') as f:
                 db.cursor().executescript(f.read())
             db.commit()
 
