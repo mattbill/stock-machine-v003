@@ -1,11 +1,11 @@
 
 # PROJECT
-bower_components
-node_modules
-venv
+bower_components/
+node_modules/
+venv/
 *.db
 
-/webapp/temp
+/webapp/temp/
 /webapp/*.log
 *.pyc
 

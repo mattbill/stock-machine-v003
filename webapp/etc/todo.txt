@@ -69,6 +69,8 @@ TODO@mattbill
 - Clean up
     - Consider moving static and maybe templates up one directory like MEAN stack structure
     - Update URLs to follow REST standards
+        - /api/stocks
+        - /api/stocks/<symbol>
 - Quandl
     - Assess Quandl and ompare data provided with what we need
     - Query Quandl API
