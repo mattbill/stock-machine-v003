@@ -57,6 +57,12 @@
         - Get stock
         - Search dataTable
 
+2016-06-04
+- Clean up
+    - Update URLs to follow REST standards
+        - /api/stocks
+        - /api/stocks/<symbol>
+
 
 TODO@mattbill
 
@@ -67,10 +73,8 @@ TODO@mattbill
     - Redo calcs
     - Automate
 - Clean up
+    - Move code from analysis ctrl to a stocks service
     - Consider moving static and maybe templates up one directory like MEAN stack structure
-    - Update URLs to follow REST standards
-        - /api/stocks
-        - /api/stocks/<symbol>
 - Quandl
     - Assess Quandl and ompare data provided with what we need
     - Query Quandl API

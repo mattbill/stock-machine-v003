@@ -23,7 +23,7 @@ def close_db(error):
     ModelHelper.close_db()
 
 
-app.register_blueprint(controllers.data.blueprint)
 app.register_blueprint(controllers.home.blueprint)
+app.register_blueprint(controllers.stocks.blueprint)
 
 ModelHelper.init_db_if_empty()
