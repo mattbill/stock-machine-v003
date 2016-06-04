@@ -16,7 +16,7 @@ angular.module('stockMachineApp').controller('automateCtrl', ['$scope', '$http',
         automationCount++;
         console.log(automationCount+': Automating stock');
 
-        $http.get('data/automate-next-stock/')
+        $http.get('api/stocks/automate/')
         .success(function(data, status, headers, config) {
             if (typeof data === 'string' && data.match(/error/gi)) {
                 console.error(data);

@@ -20,9 +20,7 @@ angular.module('stockMachineApp').controller('analysisCtrl', ['$scope', '$http',
         console.log('\nAnalyzing '+symbol);
 
         //XHR request to backend
-        //TODO@mattbill: use old URI after I get a stock API working
-        //$http.get('data/get-stock-info/?symbol='+symbol)
-        $http.get('data/get-stock-from-db/?symbol='+symbol)
+        $http.get('api/stocks/from-database/'+symbol)
             .success(function(data, status, headers, config) {
                 if (typeof data === 'string' && data.match(/error/gi)) {
                     console.error(data);

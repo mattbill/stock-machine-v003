@@ -53,7 +53,7 @@ angular.module('stockMachineApp').controller('dataTableCtrl', ['$scope', '$http'
         //XHR
         $http({
             method: 'POST',
-            url: '/data/search-data-table/',
+            url: '/api/stocks/search/',
             data: {
                 whereCond: whereCond
             }

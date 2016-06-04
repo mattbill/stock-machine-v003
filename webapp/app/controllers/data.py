@@ -6,28 +6,27 @@ import json
 blueprint = flask.Blueprint('data_blueprint', __name__)
 
 
-@blueprint.route('/data/get-stock-from-db/')
-def get_stock_from_db():
-    symbol = flask.request.args.get('symbol').upper()
+@blueprint.route('/api/stocks/from-database/<symbol>', methods=['GET'])
+def get_stock_from_db(symbol):
     stock_obj = models.data.get_stock_from_db(symbol)
     return flask.jsonify(stock_obj)
 
 
-@blueprint.route('/data/redo-calcs/', methods=['POST'])
+@blueprint.route('/api/stocks/redo-calcs/', methods=['POST'])
 def redo_calcs():
     json_obj = json.loads(flask.request.data)
     stock_obj = models.data.redo_calcs(json_obj)
     return flask.jsonify(stock_obj)
 
 
-@blueprint.route('/data/search-data-table/', methods=['POST'])
+@blueprint.route('/api/stocks/search/', methods=['POST'])
 def search_data_table():
     where_cond = flask.request.json['whereCond']
     stocks = models.data.search_data_table(where_cond)
     return flask.jsonify(stocks)
 
 
-@blueprint.route('/data/automate-next-stock/')
+@blueprint.route('/api/stocks/automate/', methods=['GET'])
 def automate_next_stock():
     symbol = models.data.automate_next_stock()
     return symbol
