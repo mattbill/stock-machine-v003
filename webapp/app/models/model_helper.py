@@ -29,6 +29,15 @@ class ModelHelper:
 
 
     @staticmethod
+    def execute(query, args=None):
+        db = ModelHelper.get_db()
+        cur = db.cursor()
+        cur.execute(query, args) if args else cur.execute(query)
+        db.commit()
+        return
+
+
+    @staticmethod
     def fetchall(query):
         db = ModelHelper.get_db()
         cur = db.execute(query)
@@ -38,9 +47,9 @@ class ModelHelper:
 
 
     @staticmethod
-    def fetchone(query, args):
+    def fetchone(query, args=None):
         db = ModelHelper.get_db()
-        cur = db.execute(query, args)
+        cur = db.execute(query, args) if args else db.execute(query)
         row = cur.fetchone()
         results = ModelHelper.row_to_dicts(cur, row)
         return results

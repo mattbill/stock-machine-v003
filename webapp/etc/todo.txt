@@ -62,6 +62,7 @@
     - Update URLs to follow REST standards
         - /api/stocks
         - /api/stocks/<symbol>
+- Fix automate feature
 
 
 TODO@mattbill
@@ -69,12 +70,15 @@ TODO@mattbill
 
 
 
+- Minor
+    - Recent stock list not working for mobile screen width
+    - Reorder stocks not working
 - Later
     - Redo calcs
-    - Automate
 - Clean up
     - Move code from analysis ctrl to a stocks service
     - Consider moving static and maybe templates up one directory like MEAN stack structure
+    - DB col names should use underscores
 - Quandl
     - Assess Quandl and ompare data provided with what we need
     - Query Quandl API

@@ -1,3 +1,4 @@
+import datetime
 import json
 from model_helper import ModelHelper
 
@@ -29,5 +30,18 @@ def search_data_table(where_cond):
 
 
 def automate_next_stock():
-    symbol = 'TFM'
-    return symbol
+    stock = ModelHelper.fetchone('''
+        SELECT stockId, symbol, dateAutomated
+        FROM stocks
+        ORDER BY dateAutomated
+        LIMIT 1
+    ''', None)
+
+    now = datetime.datetime.now()
+    ModelHelper.execute('''
+        UPDATE stocks
+        SET dateAutomated=?
+        WHERE stockId=?
+    ''', (now, stock.get('stockId')))
+
+    return stock.get('symbol')
