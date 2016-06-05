@@ -3,6 +3,7 @@ angular
     .module('stockMachineApp', [
         'ui.bootstrap',
         'ui.router',
+        'ui.sortable',
         'smart-table'
     ])
     .config(['$stateProvider', '$urlRouterProvider',function($stateProvider, $urlRouterProvider) {

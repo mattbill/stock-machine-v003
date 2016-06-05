@@ -62,7 +62,9 @@
     - Update URLs to follow REST standards
         - /api/stocks
         - /api/stocks/<symbol>
-- Fix automate feature
+- Fix
+    - Automate feature
+    - Reorder stocks
 
 
 TODO@mattbill
@@ -72,7 +74,6 @@ TODO@mattbill
 
 - Minor
     - Recent stock list not working for mobile screen width
-    - Reorder stocks not working
 - Later
     - Redo calcs
 - Clean up
