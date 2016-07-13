@@ -1,5 +1,5 @@
 //Format number as percent
-angular.module('stockMachineApp').filter('sitePercent', ['$filter', 'utilsServ', function($filter, utilsServ){
+angular.module('stockMachineApp').filter('sitePercent', ['$filter', 'UtilsServ', function($filter, UtilsServ){
     'use strict';
 
     return function(val, decimalPlaces) {
@@ -15,14 +15,14 @@ angular.module('stockMachineApp').filter('sitePercent', ['$filter', 'utilsServ',
         var number;
 
         //Try converting to number
-        number = utilsServ.toNum(val);
-        if (utilsServ.isNum(number)) {
+        number = UtilsServ.toNum(val);
+        if (UtilsServ.isNum(number)) {
             number = $filter('number')(number, decimalPlaces);
             number = number+'%';
 
-            //Else it must be a null or something. Just make sure it is a string so it displays.
+        //Else it must be a null or something. Just make sure it is a string so it displays.
         } else {
-            number = utilsServ.NAN;
+            number = UtilsServ.NAN;
         }
 
 

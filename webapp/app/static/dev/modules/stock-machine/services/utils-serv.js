@@ -1,5 +1,5 @@
 
-angular.module('stockMachineApp').factory('utilsServ', [function(){
+angular.module('stockMachineApp').factory('UtilsServ', [function(){
     'use strict';
 
     var NAN = 'NaN';

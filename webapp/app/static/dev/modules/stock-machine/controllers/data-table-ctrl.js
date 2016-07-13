@@ -1,19 +1,18 @@
 
 
 //Automation page
-angular.module('stockMachineApp').controller('dataTableCtrl', ['$scope', '$http', function($scope, $http) {
+angular.module('stockMachineApp').controller('dataTableCtrl', ['$http', '$scope', function($http, $scope) {
     'use strict';
     var vm = this;
 
 
-    //-------------------- PRIVATE --------------------
+    // PRIVATE
 
     function clearTable() {
         vm.data = [];
     }
 
     function init() {
-        //Watch and clear table
         $scope.$watch('vm.search', function(){
             clearTable();
         }, true);
@@ -22,10 +21,9 @@ angular.module('stockMachineApp').controller('dataTableCtrl', ['$scope', '$http'
     }
 
 
-    //-------------------- PUBLIC --------------------
+    // PUBLIC
 
     function getStocks() {
-        //Clear
         clearTable();
 
         //bugfix: smart-table doesn't like reinitializing the table after an XHR request. Use this and ng-if to destroy/recreate the smart-table
@@ -50,7 +48,6 @@ angular.module('stockMachineApp').controller('dataTableCtrl', ['$scope', '$http'
         var whereCond = whereArr.join('  AND  ');
         console.log('Getting stocks WHERE '+whereCond);
 
-        //XHR
         $http({
             method: 'POST',
             url: '/api/stocks/search/',

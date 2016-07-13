@@ -13,19 +13,19 @@ angular
             .state('analysis', {
                 url: "/analysis",
                 templateUrl: 'static/dev/modules/stock-machine/views/analysis.html',
-                controller: 'analysisCtrl',
+                controller: 'AnalysisCtrl',
                 controllerAs: 'vm'
             })
             .state('automate', {
                 url: "/automate",
                 templateUrl: 'static/dev/modules/stock-machine/views/automate.html',
-                controller: 'automateCtrl',
+                controller: 'AutomateCtrl',
                 controllerAs: 'vm'
             })
             .state('login', {
                 url: "/login",
                 templateUrl: 'static/dev/modules/stock-machine/views/login.html',
-                controller: 'loginCtrl',
+                controller: 'LoginCtrl',
                 controllerAs: 'vm'
             })
             .state('table', {

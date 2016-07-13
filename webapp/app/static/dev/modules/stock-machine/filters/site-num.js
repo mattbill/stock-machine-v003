@@ -1,5 +1,5 @@
 //Format financial number
-angular.module('stockMachineApp').filter('siteNum', ['$filter', 'utilsServ', function($filter, utilsServ){
+angular.module('stockMachineApp').filter('siteNum', ['$filter', 'UtilsServ', function($filter, UtilsServ){
     'use strict';
 
     return function(val, decimalPlaces) {
@@ -16,8 +16,8 @@ angular.module('stockMachineApp').filter('siteNum', ['$filter', 'utilsServ', fun
         var suffix = '';
 
         //Try formatting as a number
-        number = utilsServ.toNum(val);
-        if (utilsServ.isNum(number)) {
+        number = UtilsServ.toNum(val);
+        if (UtilsServ.isNum(number)) {
             //If over 1 billion, use suffix
             if (number > 1000000000) {
                 number /= 1000000000;
@@ -31,9 +31,9 @@ angular.module('stockMachineApp').filter('siteNum', ['$filter', 'utilsServ', fun
 
             number = $filter('number')(number, decimalPlaces);
 
+        //Else it must be a null or something. Just make sure it is a string so it displays.
         } else {
-            //Else it must be a null or something. Just make sure it is a string so it displays.
-            number = utilsServ.NAN;
+            number = UtilsServ.NAN;
         }
 
         return number+suffix;

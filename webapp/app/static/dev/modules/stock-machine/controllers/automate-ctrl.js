@@ -1,17 +1,17 @@
 
 
 //Automation page
-angular.module('stockMachineApp').controller('automateCtrl', ['$scope', '$http', function($scope, $http) {
+angular.module('stockMachineApp').controller('AutomateCtrl', ['$http', function($http) {
     'use strict';
     var vm = this;
 
-    //-------------------- PRIVATE --------------------
+
+    // PRIVATE
 
     var NUM_STOCKS_TO_AUTOMATE = 500,
         automationCount = null,
         automating = false;
 
-    //Automate next stock
     function automateNextStock() {
         automationCount++;
         console.log(automationCount+': Automating stock');
@@ -44,10 +44,29 @@ angular.module('stockMachineApp').controller('automateCtrl', ['$scope', '$http',
     }
 
 
-    //-------------------- Public --------------------
+    // PRIVATE
 
-    //Get the percent of automation completed
-    function automationPercent() {
+    function automationStart() {
+        if (automationCount === null || automationCount >= NUM_STOCKS_TO_AUTOMATE) {
+            console.log('\nAutomating ('+NUM_STOCKS_TO_AUTOMATE+') stocks...');
+            automationCount = 0;
+        } else {
+            console.log('Resuming automation...');
+        }
+        automating = true;
+        automateNextStock();
+    }
+
+    function automationStop() {
+        automating = false;
+        console.log('Automation stopped');
+    }
+
+    function getAutomationCount() {
+        return automationCount;
+    }
+
+    function getAutomationPercent() {
         var percent;
         var count = automationCount;
         if (count === null) {
@@ -60,42 +79,15 @@ angular.module('stockMachineApp').controller('automateCtrl', ['$scope', '$http',
         return percent;
     }
 
-    //Start automating stocks
-    function automationStart() {
-        if (automationCount === null || automationCount >= NUM_STOCKS_TO_AUTOMATE) {
-            console.log('\nAutomating ('+NUM_STOCKS_TO_AUTOMATE+') stocks...');
-            automationCount = 0;
-        } else {
-            console.log('Resuming automation...');
-        }
-        automating = true;
-        automateNextStock();
-    }
-
-    //Stop automating stocks
-    function automationStop() {
-        automating = false;
-        console.log('Automation stopped');
-    }
-
-    //the number of stocks that have been automated
-    function getAutomationCount() {
-        return automationCount;
-    }
-
-    //Is automation currently running
     function isAutomating() {
         return automating;
     }
 
 
-    //--------------------  --------------------
-
-
-     vm.NUM_STOCKS_TO_AUTOMATE = NUM_STOCKS_TO_AUTOMATE;
-     vm.automationPercent = automationPercent;
-     vm.automationStart = automationStart;
-     vm.automationStop = automationStop;
-     vm.getAutomationCount = getAutomationCount;
-     vm.isAutomating = isAutomating;
+    vm.NUM_STOCKS_TO_AUTOMATE = NUM_STOCKS_TO_AUTOMATE;
+    vm.automationStart = automationStart;
+    vm.automationStop = automationStop;
+    vm.getAutomationCount = getAutomationCount;
+    vm.getAutomationPercent = getAutomationPercent;
+    vm.isAutomating = isAutomating;
 }]);

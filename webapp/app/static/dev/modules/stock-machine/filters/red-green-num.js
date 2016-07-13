@@ -1,5 +1,5 @@
 //Returns a CSS class for red vs green vs black numbers
-angular.module('stockMachineApp').filter('redGreenNum', ['utilsServ', function(utilsServ){
+angular.module('stockMachineApp').filter('redGreenNum', ['UtilsServ', function(UtilsServ){
     'use strict';
 
     return function(val) {
@@ -12,8 +12,8 @@ angular.module('stockMachineApp').filter('redGreenNum', ['utilsServ', function(u
         var cssClass = '';
 
         //Try converting to a number and then checking what color it should be
-        number = utilsServ.toNum(val);
-        if (utilsServ.isNum(number)) {
+        number = UtilsServ.toNum(val);
+        if (UtilsServ.isNum(number)) {
             if (number < 8) {
                 cssClass = 'red-text';
             } else if (number < 10) {
@@ -22,7 +22,7 @@ angular.module('stockMachineApp').filter('redGreenNum', ['utilsServ', function(u
                 cssClass = 'green-text';
             }
 
-            //Null, etc are red
+        //Null, etc are red
         } else {
             cssClass = 'red-text';
         }

@@ -1,5 +1,5 @@
 
-angular.module('stockMachineApp').factory('StocksServ', ['$http', '$log', '$rootScope', '$timeout', 'utilsServ', function($http, $log, $rootScope, $timeout, utilsServ) {
+angular.module('stockMachineApp').factory('StocksServ', ['$http', '$log', '$rootScope', '$timeout', 'UtilsServ', function($http, $log, $rootScope, $timeout, UtilsServ) {
     'use strict';
 
 
@@ -109,7 +109,7 @@ angular.module('stockMachineApp').factory('StocksServ', ['$http', '$log', '$root
         if (stockObj && stockObj.calcs) {
             var percentageDiscount = stockObj.calcs.percentageDiscount;
 
-            if (utilsServ.isNum(percentageDiscount) === false) {
+            if (UtilsServ.isNum(percentageDiscount) === false) {
                 cssClass = 'discount-not-numeric';
             } else if (percentageDiscount < 0) {
                 cssClass = 'negative-discount';

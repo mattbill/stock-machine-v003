@@ -97,8 +97,6 @@ angular.module('stockMachineApp').directive('stockMetricsTable', [function() {
 
                 var currStock = $scope.vm.StocksServ.currStock;
                 if (_.size(currStock) > 0) {
-
-                    //Vars
                     var nums = currStock.nums;
                     var yearData = {};
                     var metricKeys = [
@@ -171,12 +169,9 @@ angular.module('stockMachineApp').directive('stockMetricsTable', [function() {
                     };
 
 
-                    //Add vars to $scope
                     $scope.tableData = tableData;
                     $scope.averages = averages;
                 }
-
-
             });
         }]
     };

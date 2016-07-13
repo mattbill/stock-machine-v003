@@ -16,8 +16,8 @@
 
         <div class="bold">{{vm.getAutomationCount() || 0}} / {{vm.NUM_STOCKS_TO_AUTOMATE}}</div>
         <div class="progress flex-this-1">
-            <div class="progress-bar" style="width:{{vm.automationPercent()}}%;">
-                {{vm.automationPercent()}}%
+            <div class="progress-bar" style="width:{{vm.getAutomationPercent()}}%;">
+                {{vm.getAutomationPercent()}}%
             </div>
         </div>
 

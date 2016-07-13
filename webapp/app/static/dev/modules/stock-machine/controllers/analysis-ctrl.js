@@ -1,7 +1,7 @@
 
 
 //Analysis page
-angular.module('stockMachineApp').controller('analysisCtrl', ['$scope', '$modal', 'StocksServ', function($scope, $modal, StocksServ) {
+angular.module('stockMachineApp').controller('AnalysisCtrl', ['$scope', '$modal', 'StocksServ', function($scope, $modal, StocksServ) {
     'use strict';
     var vm = this;
 
@@ -34,8 +34,8 @@ angular.module('stockMachineApp').controller('analysisCtrl', ['$scope', '$modal'
     function openRecentStockListModal() {
         $modal.open({
             animation: true,
-            templateUrl: 'recentStockListModal.html',
-            controller: 'recentStockListModalCtrl as vm',
+            templateUrl: 'static/dev/modules/stock-machine/modals/recent-stock-list-modal.html',
+            controller: 'RecentStockListModalCtrl as vm',
             size: 'lg'
         });
     }

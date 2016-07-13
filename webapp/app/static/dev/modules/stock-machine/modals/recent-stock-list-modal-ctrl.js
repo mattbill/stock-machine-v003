@@ -1,6 +1,6 @@
 
 //Controller for RecentStocks modal
-angular.module('stockMachineApp').controller('recentStockListModalCtrl', ['$scope', '$modalInstance', 'StocksServ', function($scope, $modalInstance, StocksServ) {
+angular.module('stockMachineApp').controller('RecentStockListModalCtrl', ['$scope', '$modalInstance', 'StocksServ', function($scope, $modalInstance, StocksServ) {
     'use strict';
     var vm = this;
 
