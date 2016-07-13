@@ -18,10 +18,10 @@ angular.module('stockMachineApp').directive('stockInputCalc', [function() {
             '   <div class="form-group row">'+
             '       <label class="control-label col-md-4" for="{{key}}">{{label}}</label>' +
             '       <div class="col-md-2" ng-show="!readonly">' +
-            '           <input type="text" class="form-control" id="{{key}}" ng-model="$parent.vm.currStock.calcs[key]" ng-blur="$parent.vm.redoCalcs(key, $event.target.value)" /> ' +
+            '           <input type="text" class="form-control" id="{{key}}" ng-model="$parent.vm.StocksServ.currStock.calcs[key]" ng-blur="$parent.vm.StocksServ.redoCalcs(key, $event.target.value)" /> ' +
             '       </div>' +
             '       <div class="col-md-2" ng-show="readonly">' +
-            '           <input  type="text" class="form-control" id="{{key}}" ng-model="$parent.vm.currStock.calcs[key]" readonly /> ' +
+            '           <input  type="text" class="form-control" id="{{key}}" ng-model="$parent.vm.StocksServ.currStock.calcs[key]" readonly /> ' +
             '       </div>' +
             '       <div class="col-md6" style="padding:7px 15px 0 15px" ng-transclude></div>' +
             '   </div>' +

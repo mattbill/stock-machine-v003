@@ -62,40 +62,40 @@ angular.module('stockMachineApp').directive('stockMetricsTable', [function() {
             '               <td>&nbsp;</td>' +
             '               <td>&nbsp;</td>' +
             '           </tr>' +
-            '           <tr ng-if="vm.currStock">' +
+            '           <tr ng-if="vm.StocksServ.currStock">' +
             '               <td>&nbsp;</td>' +
             '               <td>' +
-            '                   <simple-chart data="vm.currStock.nums.roic.numbers.arr"></simple-chart>' +
+            '                   <simple-chart data="vm.StocksServ.currStock.nums.roic.numbers.arr"></simple-chart>' +
             '               </td>' +
             '               <td colspan="2">' +
-            '                   <simple-chart data="vm.currStock.nums.bvps.numbers.arr"></simple-chart>' +
+            '                   <simple-chart data="vm.StocksServ.currStock.nums.bvps.numbers.arr"></simple-chart>' +
             '               </td>' +
             '               <td colspan="2">' +
-            '                   <simple-chart data="vm.currStock.nums.sales.numbers.arr"></simple-chart>' +
+            '                   <simple-chart data="vm.StocksServ.currStock.nums.sales.numbers.arr"></simple-chart>' +
             '               </td>' +
             '               <td colspan="2">' +
-            '                   <simple-chart data="vm.currStock.nums.eps.numbers.arr"></simple-chart>' +
+            '                   <simple-chart data="vm.StocksServ.currStock.nums.eps.numbers.arr"></simple-chart>' +
             '               </td>' +
             '               <td colspan="2">' +
-            '                   <simple-chart data="vm.currStock.nums.cashFlow.numbers.arr"></simple-chart>' +
+            '                   <simple-chart data="vm.StocksServ.currStock.nums.cashFlow.numbers.arr"></simple-chart>' +
             '               </td>' +
             '               <td colspan="1">' +
-            '                   <simple-chart data="vm.currStock.nums.debt.numbers.arr"></simple-chart>' +
+            '                   <simple-chart data="vm.StocksServ.currStock.nums.debt.numbers.arr"></simple-chart>' +
             '               </td>' +
             '               <td colspan="1">' +
-            '                   <simple-chart data="vm.currStock.nums.pe.numbers.arr"></simple-chart>' +
+            '                   <simple-chart data="vm.StocksServ.currStock.nums.pe.numbers.arr"></simple-chart>' +
             '               </td>' +
             '               <td colspan="1">' +
-            '                   <simple-chart data="vm.currStock.nums.netIncome.numbers.arr"></simple-chart>' +
+            '                   <simple-chart data="vm.StocksServ.currStock.nums.netIncome.numbers.arr"></simple-chart>' +
             '               </td>' +
             '           </tr>' +
             '       </tbody>' +
             '   </table>' +
             '</div>',
         controller: ['$scope', function($scope) {
-            $scope.$watch('vm.currStock', function(){
+            $scope.$watch('vm.StocksServ.currStock', function(){
 
-                var currStock = $scope.vm.currStock;
+                var currStock = $scope.vm.StocksServ.currStock;
                 if (_.size(currStock) > 0) {
 
                     //Vars
