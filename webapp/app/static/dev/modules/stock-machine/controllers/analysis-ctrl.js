@@ -35,7 +35,7 @@ angular.module('stockMachineApp').controller('analysisCtrl', ['$scope', '$modal'
         $modal.open({
             animation: true,
             templateUrl: 'recentStockListModal.html',
-            controller: 'recentStockListModalCtrl',
+            controller: 'recentStockListModalCtrl as vm',
             size: 'lg'
         });
     }
