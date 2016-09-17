@@ -82,6 +82,8 @@
 2016-09-17
 - Upgrade
     - Start upgrading to Angular 1.5
+    - Clean up directives
+
 
 TODO@mattbill
 

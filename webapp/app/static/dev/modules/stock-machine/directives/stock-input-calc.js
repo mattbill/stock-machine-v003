@@ -1,5 +1,4 @@
 
-//Directive for stock calculations <input> fields
 angular.module('stockMachineApp').directive('stockInputCalc', ['StocksServ', function(StocksServ) {
     'use strict';
 
@@ -13,19 +12,7 @@ angular.module('stockMachineApp').directive('stockInputCalc', ['StocksServ', fun
             tooltip: '@',
             readonly: '@'
         },
-        template: '' +
-            '<div class="control-group">' +
-            '   <div class="form-group row">'+
-            '       <label class="control-label col-md-4" for="{{key}}">{{label}}</label>' +
-            '       <div class="col-md-2" ng-show="!readonly">' +
-            '           <input type="text" class="form-control" id="{{key}}" ng-model="vm.StocksServ.currStock.calcs[key]" ng-blur="vm.redoCalcs(key, $event)" /> ' +
-            '       </div>' +
-            '       <div class="col-md-2" ng-show="readonly">' +
-            '           <input  type="text" class="form-control" id="{{key}}" ng-model="vm.StocksServ.currStock.calcs[key]" readonly /> ' +
-            '       </div>' +
-            '       <div class="col-md6" style="padding:7px 15px 0 15px" ng-transclude></div>' +
-            '   </div>' +
-            '</div>',
+        templateUrl: 'static/dev/modules/stock-machine/directives/stock-input-calc.html',
         controllerAs: 'vm',
         controller: function() {
             var vm = this;
