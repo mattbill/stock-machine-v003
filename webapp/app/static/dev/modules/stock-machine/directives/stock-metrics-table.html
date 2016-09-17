@@ -19,7 +19,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="yearObj in tableData">
+            <tr ng-repeat="yearObj in vm.tableData">
                 <td class="bold">{{yearObj.year}}</td>
                 <td ng-class="yearObj.roic.num | redGreenNum">{{yearObj.roic.num | sitePercent}}</td>
 
@@ -41,15 +41,15 @@
             </tr>
             <tr>
                 <td class="bold" style="min-width:100px;">Avg of <br>Up To 5 Latest<br>Growth Rates:</td>
-                <td ng-class="averages.roic | redGreenNum">{{averages.roic | sitePercent}}</td>
+                <td ng-class="vm.averages.roic | redGreenNum">{{vm.averages.roic | sitePercent}}</td>
                 <td>&nbsp;</td>
-                <td ng-class="averages.bvps | redGreenNum">{{averages.bvps | sitePercent}}</td>
+                <td ng-class="vm.averages.bvps | redGreenNum">{{vm.averages.bvps | sitePercent}}</td>
                 <td>&nbsp;</td>
-                <td ng-class="averages.sales | redGreenNum">{{averages.sales | sitePercent}}</td>
+                <td ng-class="vm.averages.sales | redGreenNum">{{vm.averages.sales | sitePercent}}</td>
                 <td>&nbsp;</td>
-                <td ng-class="averages.eps | redGreenNum">{{averages.eps | sitePercent}}</td>
+                <td ng-class="vm.averages.eps | redGreenNum">{{vm.averages.eps | sitePercent}}</td>
                 <td>&nbsp;</td>
-                <td ng-class="averages.cashFlow | redGreenNum">{{averages.cashFlow | sitePercent}}</td>
+                <td ng-class="vm.averages.cashFlow | redGreenNum">{{vm.averages.cashFlow | sitePercent}}</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>

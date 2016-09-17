@@ -1,92 +1,101 @@
 
-angular.module('stockMachineApp').directive('stockMetricsTable', [function() {
+angular.module('stockMachineApp').directive('stockMetricsTable', ['StocksServ', function(StocksServ) {
     'use strict';
 
     return {
         restrict: 'E',
         replace: true,
+        scope: {},
         templateUrl: 'static/dev/modules/stock-machine/directives/stock-metrics-table.html',
+        controllerAs: 'vm',
         controller: function($scope) {
-            $scope.$watch('vm.StocksServ.currStock', function(){
+            var vm = this;
 
-                var currStock = $scope.vm.StocksServ.currStock;
-                if (_.size(currStock) > 0) {
-                    var nums = currStock.nums;
-                    var yearData = {};
-                    var metricKeys = [
-                        //'roic',
-                        'bvps',
-                        'sales',
-                        'eps',
-                        'cashFlow',
-                        'debt',
-                        'pe',
-                        'netIncome',
-                    ];
+            // PRIVATE
 
+            function activate() {
+                $scope.$watch('vm.StocksServ.currStock', function() {
+                    var currStock = StocksServ.currStock;
+                    if (!currStock) { return }
 
-                    //Loop through metrics, regrouping metric data by year
-                    angular.forEach(metricKeys, function(metricKey){
-                        var metricObj = nums[metricKey];
+                    vm.tableData = makeTableData(currStock.nums);
+                    vm.averages = makeAverages(currStock.nums);
+                });
+            }
 
-                        angular.forEach(metricObj.numbers.arr, function(val, year){
+            function makeAverages(currStockNums) {
+                var averages = {
+                    roic: currStockNums.roic.numbers.average,
+                    bvps: currStockNums.bvps.growths.average,
+                    sales: currStockNums.sales.growths.average,
+                    eps: currStockNums.eps.growths.average,
+                    cashFlow: currStockNums.cashFlow.growths.average
+                };
+                return averages;
+            }
+
+            function makeTableData(currStockNums) {
+                var yearData = {};
+                var metricKeys = [
+                    //'roic',
+                    'bvps',
+                    'sales',
+                    'eps',
+                    'cashFlow',
+                    'debt',
+                    'pe',
+                    'netIncome'
+                ];
+
+                //Loop through metrics, regrouping metric data by year
+                angular.forEach(metricKeys, function(metricKey){
+                    var metricObj = currStockNums[metricKey];
+
+                    angular.forEach(metricObj.numbers.arr, function(val, year){
+                        if (typeof yearData[year] === 'undefined') {
+                            yearData[year] = {};
+                        }
+                        if (typeof yearData[year][metricKey] === 'undefined') {
+                            yearData[year][metricKey] = {};
+                        }
+                        yearData[year][metricKey].num = val;
+                    });
+
+                    if (metricObj.growths) {
+                        angular.forEach(metricObj.growths.arr, function(val, year){
                             if (typeof yearData[year] === 'undefined') {
                                 yearData[year] = {};
                             }
                             if (typeof yearData[year][metricKey] === 'undefined') {
                                 yearData[year][metricKey] = {};
                             }
-                            yearData[year][metricKey].num = val;
+                            yearData[year][metricKey].growth = val;
                         });
+                    }
+                });
 
-                        if (metricObj.growths) {
-                            angular.forEach(metricObj.growths.arr, function(val, year){
-                                if (typeof yearData[year] === 'undefined') {
-                                    yearData[year] = {};
-                                }
-                                if (typeof yearData[year][metricKey] === 'undefined') {
-                                    yearData[year][metricKey] = {};
-                                }
-                                yearData[year][metricKey].growth = val;
-                            });
-                        }
-                    });
-                    //console.log(yearData);
+                //Now turn data into an array, sorted by newest to oldest years
+                var tableData = [];
+                angular.forEach(yearData, function(yearObj, year){
+                    yearObj.year = year;
+                    tableData.unshift(yearObj);
+                });
 
+                try {
+                    tableData[0].roic = { num: currStockNums.roic.numbers.arr[1] };
+                    tableData[1].roic = { num: currStockNums.roic.numbers.arr[5] };
+                } catch(error) {}
 
-                    //Now turn data into an array, sorted by newest to oldest years
-                    var tableData = [];
-                    angular.forEach(yearData, function(yearObj, year){
-                        yearObj.year = year;
-                        tableData.unshift(yearObj);
-                    });
+                return tableData;
+            }
 
 
-                    //Add ROIC to data
-                    try {
-                        tableData[0].roic = { num: nums.roic.numbers.arr[1] };
-                        tableData[1].roic = { num: nums.roic.numbers.arr[5] };
-                        //console.log(tableData);
-                    } catch(error) {}
+            // PUBLIC
 
-
-                    //Remember averages
-                    var averages = {
-                        'roic': nums.roic.numbers.average,
-                        'bvps': nums.bvps.growths.average,
-                        'sales': nums.sales.growths.average,
-                        'eps': nums.eps.growths.average,
-                        'cashFlow': nums.cashFlow.growths.average
-                        //'debt': nums.debt.growths.average,
-                        //'pe': nums.pe.growths.average,
-                        //'netIncome': nums.netIncome.growths.average,
-                    };
-
-
-                    $scope.tableData = tableData;
-                    $scope.averages = averages;
-                }
-            });
+            vm.averages = null;
+            vm.tableData = null;
+            vm.StocksServ = StocksServ;
+            activate();
         }
     };
 }]);
