@@ -79,11 +79,14 @@
     - Not an option. Hard to find the numbers we need. None of the useful databases are free.
     - It would be better to try scraping msn
 
+2016-09-17
+- Upgrade
+    - Start upgrading to Angular 1.5
 
 TODO@mattbill
 
-
 - Upgrade
+
     - Angular 1.5 + TypeScript
     - Angular 2
     - MEAN stack
