@@ -2,7 +2,7 @@
 //Controller for RecentStocks modal
 angular.module('stockMachineApp').controller('RecentStockListModalCtrl', ['$scope', '$modalInstance', 'StocksServ', function($scope, $modalInstance, StocksServ) {
     'use strict';
-    var vm = this;
+    var $ctrl = this;
 
     function modalOk() {
         $modalInstance.close();
@@ -12,7 +12,7 @@ angular.module('stockMachineApp').controller('RecentStockListModalCtrl', ['$scop
         $modalInstance.dismiss('cancel');
     }
 
-    vm.StocksServ = StocksServ;
-    vm.modalOk = modalOk;
-    vm.modalCancel = modalCancel;
+    $ctrl.StocksServ = StocksServ;
+    $ctrl.modalOk = modalOk;
+    $ctrl.modalCancel = modalCancel;
 }]);

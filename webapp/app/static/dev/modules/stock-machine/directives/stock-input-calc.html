@@ -3,10 +3,10 @@
     <div class="form-group row">
         <label class="control-label col-md-4" for="{{key}}">{{label}}</label>
         <div class="col-md-2" ng-show="!readonly">
-            <input type="text" class="form-control" id="{{key}}" ng-model="vm.StocksServ.currStock.calcs[key]" ng-blur="vm.redoCalcs(key, $event)"/>
+            <input type="text" class="form-control" id="{{key}}" ng-model="$ctrl.StocksServ.currStock.calcs[key]" ng-blur="$ctrl.redoCalcs(key, $event)"/>
         </div>
         <div class="col-md-2" ng-show="readonly">
-            <input type="text" class="form-control" id="{{key}}" ng-model="vm.StocksServ.currStock.calcs[key]" readonly/>
+            <input type="text" class="form-control" id="{{key}}" ng-model="$ctrl.StocksServ.currStock.calcs[key]" readonly/>
         </div>
         <div class="col-md6" style="padding:7px 15px 0 15px" ng-transclude></div>
     </div>

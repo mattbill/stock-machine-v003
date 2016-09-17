@@ -4,20 +4,20 @@
     <div class="well">
         <div class="flex-cols">
             <div class="flex-auto">
-                <a ng-if="!vm.isAutomating()" href="" class="btn btn-success" ng-click="vm.automationStart();">Start</a>
-                <a ng-if="vm.isAutomating()" href="" class="btn btn-danger" ng-click="vm.automationStop();">Stop</a>
+                <a ng-if="!$ctrl.isAutomating()" href="" class="btn btn-success" ng-click="$ctrl.automationStart();">Start</a>
+                <a ng-if="$ctrl.isAutomating()" href="" class="btn btn-danger" ng-click="$ctrl.automationStop();">Stop</a>
             </div>
-            <div ng-if="vm.isAutomating()" class="flex-this-1" style="font-size: 24px; padding-top: 4px;">
+            <div ng-if="$ctrl.isAutomating()" class="flex-this-1" style="font-size: 24px; padding-top: 4px;">
                 <i class="fa fa-refresh fa-spin"></i>
             </div>
         </div>
 
         <br />
 
-        <div class="bold">{{vm.getAutomationCount() || 0}} / {{vm.NUM_STOCKS_TO_AUTOMATE}}</div>
+        <div class="bold">{{$ctrl.getAutomationCount() || 0}} / {{$ctrl.NUM_STOCKS_TO_AUTOMATE}}</div>
         <div class="progress flex-this-1">
-            <div class="progress-bar" style="width:{{vm.getAutomationPercent()}}%;">
-                {{vm.getAutomationPercent()}}%
+            <div class="progress-bar" style="width:{{$ctrl.getAutomationPercent()}}%;">
+                {{$ctrl.getAutomationPercent()}}%
             </div>
         </div>
 

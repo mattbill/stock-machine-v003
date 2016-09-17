@@ -3,17 +3,17 @@
 //Automation page
 angular.module('stockMachineApp').controller('dataTableCtrl', ['$http', '$scope', function($http, $scope) {
     'use strict';
-    var vm = this;
+    var $ctrl = this;
 
 
     // PRIVATE
 
     function clearTable() {
-        vm.data = [];
+        $ctrl.data = [];
     }
 
     function init() {
-        $scope.$watch('vm.search', function(){
+        $scope.$watch('$ctrl.search', function(){
             clearTable();
         }, true);
 
@@ -27,10 +27,10 @@ angular.module('stockMachineApp').controller('dataTableCtrl', ['$http', '$scope'
         clearTable();
 
         //bugfix: smart-table doesn't like reinitializing the table after an XHR request. Use this and ng-if to destroy/recreate the smart-table
-        vm.state = 'loading';
+        $ctrl.state = 'loading';
 
         var whereArr = [];
-        angular.forEach(vm.search, function(val, key){
+        angular.forEach($ctrl.search, function(val, key){
             val = val.trim();
             if (val) {
                 //If they did not add an operator (e.g. >|<|=, etc) add ='' for them
@@ -58,13 +58,13 @@ angular.module('stockMachineApp').controller('dataTableCtrl', ['$http', '$scope'
         .success(function(data, status, headers, config) {
             if (angular.isArray(data) === false) {
                 console.error( $('<div></div>').html(data).text() );
-                vm.state = 'loaded';
+                $ctrl.state = 'loaded';
 
             } else {
-                vm.data = data.map(function(row){
+                $ctrl.data = data.map(function(row){
                     return JSON.parse(row['allInfoAsJson']);
                 });
-                vm.state = 'loaded';
+                $ctrl.state = 'loaded';
             }
         })
         .error(function(data, status, headers, config) {
@@ -76,11 +76,11 @@ angular.module('stockMachineApp').controller('dataTableCtrl', ['$http', '$scope'
 
     //--------------------  --------------------
 
-    vm.data = [];
-    vm.search = {};
-    vm.state = '';
+    $ctrl.data = [];
+    $ctrl.search = {};
+    $ctrl.state = '';
 
-    vm.getStocks = getStocks;
+    $ctrl.getStocks = getStocks;
 
     init();
 }]);

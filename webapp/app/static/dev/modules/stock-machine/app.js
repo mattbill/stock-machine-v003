@@ -14,24 +14,24 @@ angular
                 url: "/analysis",
                 templateUrl: 'static/dev/modules/stock-machine/views/analysis.html',
                 controller: 'AnalysisCtrl',
-                controllerAs: 'vm'
+                controllerAs: '$ctrl'
             })
             .state('automate', {
                 url: "/automate",
                 templateUrl: 'static/dev/modules/stock-machine/views/automate.html',
                 controller: 'AutomateCtrl',
-                controllerAs: 'vm'
+                controllerAs: '$ctrl'
             })
             .state('login', {
                 url: "/login",
                 templateUrl: 'static/dev/modules/stock-machine/views/login.html',
                 controller: 'LoginCtrl',
-                controllerAs: 'vm'
+                controllerAs: '$ctrl'
             })
             .state('table', {
                 url: "/table",
                 templateUrl: 'static/dev/modules/stock-machine/views/data-table.html',
                 controller: 'dataTableCtrl',
-                controllerAs: 'vm'
+                controllerAs: '$ctrl'
             });
     }]);

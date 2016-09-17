@@ -7,19 +7,19 @@ angular.module('stockMachineApp').directive('stockMetricsTable', ['StocksServ', 
         replace: true,
         scope: {},
         templateUrl: 'static/dev/modules/stock-machine/directives/stock-metrics-table.html',
-        controllerAs: 'vm',
+        controllerAs: '$ctrl',
         controller: function($scope) {
-            var vm = this;
+            var $ctrl = this;
 
             // PRIVATE
 
             function activate() {
-                $scope.$watch('vm.StocksServ.currStock', function() {
+                $scope.$watch('$ctrl.StocksServ.currStock', function() {
                     var currStock = StocksServ.currStock;
                     if (!currStock) { return }
 
-                    vm.tableData = makeTableData(currStock.nums);
-                    vm.averages = makeAverages(currStock.nums);
+                    $ctrl.tableData = makeTableData(currStock.nums);
+                    $ctrl.averages = makeAverages(currStock.nums);
                 });
             }
 
@@ -92,9 +92,9 @@ angular.module('stockMachineApp').directive('stockMetricsTable', ['StocksServ', 
 
             // PUBLIC
 
-            vm.averages = null;
-            vm.tableData = null;
-            vm.StocksServ = StocksServ;
+            $ctrl.averages = null;
+            $ctrl.tableData = null;
+            $ctrl.StocksServ = StocksServ;
             activate();
         }
     };

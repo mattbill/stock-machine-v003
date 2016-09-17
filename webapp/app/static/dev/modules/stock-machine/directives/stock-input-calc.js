@@ -13,16 +13,16 @@ angular.module('stockMachineApp').directive('stockInputCalc', ['StocksServ', fun
             readonly: '@'
         },
         templateUrl: 'static/dev/modules/stock-machine/directives/stock-input-calc.html',
-        controllerAs: 'vm',
+        controllerAs: '$ctrl',
         controller: function() {
-            var vm = this;
+            var $ctrl = this;
 
             function redoCalcs(key, $event) {
-                vm.StocksServ.redoCalcs(key, $event.target.value);
+                $ctrl.StocksServ.redoCalcs(key, $event.target.value);
             }
 
-            vm.redoCalcs = redoCalcs;
-            vm.StocksServ = StocksServ;
+            $ctrl.redoCalcs = redoCalcs;
+            $ctrl.StocksServ = StocksServ;
         }
     };
 }]);

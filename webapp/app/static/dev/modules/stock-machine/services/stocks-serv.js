@@ -72,7 +72,7 @@ angular.module('stockMachineApp').factory('StocksServ', ['$http', '$log', '$root
     var stockList = [];
 
     function analyzeStocks() {
-        $log.log('Starting stock vm...');
+        $log.log('Starting stock $ctrl...');
         stocksToAnalyze = StocksServ.stocksInput.toUpperCase().replace(/ /g, '').split(',').filter(function(val) { return val; });
         analyzeStocksArr();
     }

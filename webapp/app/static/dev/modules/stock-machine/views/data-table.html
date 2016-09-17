@@ -2,7 +2,7 @@
 <div>
     <h1>DataTable</h1>
 
-    <table st-table="vm.data" class="table table-bordered table-striped table-condensed">
+    <table st-table="$ctrl.data" class="table table-bordered table-striped table-condensed">
         <thead>
             <tr>
                 <th st-sort="symbol">Symbol</th>
@@ -18,39 +18,39 @@
             </tr>
             <tr>
                 <th>
-                    <input ng-model="vm.search.symbol" xng-enter="vm.getStocks()" placeholder="" class="input-sm form-control" type="search"/>
+                    <input ng-model="$ctrl.search.symbol" xng-enter="$ctrl.getStocks()" placeholder="" class="input-sm form-control" type="search"/>
                 </th>
                     <th>
-                        <input ng-model="vm.search.name" xng-enter="vm.getStocks()" placeholder="" class="input-sm form-control" type="search"/>
+                        <input ng-model="$ctrl.search.name" xng-enter="$ctrl.getStocks()" placeholder="" class="input-sm form-control" type="search"/>
                     </th>
                 <th>
-                    <input ng-model="vm.search.currentStockPrice" xng-enter="vm.getStocks()" placeholder="" class="input-sm form-control" type="search"/>
+                    <input ng-model="$ctrl.search.currentStockPrice" xng-enter="$ctrl.getStocks()" placeholder="" class="input-sm form-control" type="search"/>
                 </th>
                 <th>
-                    <input ng-model="vm.search.percentageDiscount" xng-enter="vm.getStocks()" placeholder="" class="input-sm form-control" type="search"/>
+                    <input ng-model="$ctrl.search.percentageDiscount" xng-enter="$ctrl.getStocks()" placeholder="" class="input-sm form-control" type="search"/>
                 </th>
                 <th>
-                    <input ng-model="vm.search.averageRoics" xng-enter="vm.getStocks()" placeholder="" class="input-sm form-control" type="search"/>
+                    <input ng-model="$ctrl.search.averageRoics" xng-enter="$ctrl.getStocks()" placeholder="" class="input-sm form-control" type="search"/>
                 </th>
                 <th>
-                    <input ng-model="vm.search.averageBvpsGrowth" xng-enter="vm.getStocks()" placeholder="" class="input-sm form-control" type="search"/>
+                    <input ng-model="$ctrl.search.averageBvpsGrowth" xng-enter="$ctrl.getStocks()" placeholder="" class="input-sm form-control" type="search"/>
                 </th>
                 <th>
-                    <input ng-model="vm.search.averageSalesGrowth" xng-enter="vm.getStocks()" placeholder="" class="input-sm form-control" type="search"/>
+                    <input ng-model="$ctrl.search.averageSalesGrowth" xng-enter="$ctrl.getStocks()" placeholder="" class="input-sm form-control" type="search"/>
                 </th>
                 <th>
-                    <input ng-model="vm.search.averageEpsGrowth" xng-enter="vm.getStocks()" placeholder="" class="input-sm form-control" type="search"/>
+                    <input ng-model="$ctrl.search.averageEpsGrowth" xng-enter="$ctrl.getStocks()" placeholder="" class="input-sm form-control" type="search"/>
                 </th>
                 <th>
-                    <input ng-model="vm.search.averageCashFlowGrowth" xng-enter="vm.getStocks()" placeholder="" class="input-sm form-control" type="search"/>
+                    <input ng-model="$ctrl.search.averageCashFlowGrowth" xng-enter="$ctrl.getStocks()" placeholder="" class="input-sm form-control" type="search"/>
                 </th>
                 <th>
-                    <input ng-model="vm.search.stockMarket" xng-enter="vm.getStocks()" placeholder="" class="input-sm form-control" type="search"/>
+                    <input ng-model="$ctrl.search.stockMarket" xng-enter="$ctrl.getStocks()" placeholder="" class="input-sm form-control" type="search"/>
                 </th>
             </tr>
         </thead>
-        <tbody ng-if="vm.state==='loaded'">
-            <tr ng-repeat="stockObj in vm.data">
+        <tbody ng-if="$ctrl.state==='loaded'">
+            <tr ng-repeat="stockObj in $ctrl.data">
                 <td>{{stockObj.symbol}}</td>
                 <td>{{stockObj.name}}</td>
                 <td>{{stockObj.nums.currentStockPrice}}</td>
@@ -66,7 +66,7 @@
     </table>
 
     <!-- Loading -->
-    <div ng-if="vm.state==='loading'" class="text-center" style="padding: 100px;">
+    <div ng-if="$ctrl.state==='loading'" class="text-center" style="padding: 100px;">
         <i class="fa fa-refresh fa-spin fa-lg"></i>
     </div>
 

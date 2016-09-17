@@ -3,7 +3,7 @@
 //Automation page
 angular.module('stockMachineApp').controller('AutomateCtrl', ['$http', function($http) {
     'use strict';
-    var vm = this;
+    var $ctrl = this;
 
 
     // PRIVATE
@@ -84,10 +84,10 @@ angular.module('stockMachineApp').controller('AutomateCtrl', ['$http', function(
     }
 
 
-    vm.NUM_STOCKS_TO_AUTOMATE = NUM_STOCKS_TO_AUTOMATE;
-    vm.automationStart = automationStart;
-    vm.automationStop = automationStop;
-    vm.getAutomationCount = getAutomationCount;
-    vm.getAutomationPercent = getAutomationPercent;
-    vm.isAutomating = isAutomating;
+    $ctrl.NUM_STOCKS_TO_AUTOMATE = NUM_STOCKS_TO_AUTOMATE;
+    $ctrl.automationStart = automationStart;
+    $ctrl.automationStop = automationStop;
+    $ctrl.getAutomationCount = getAutomationCount;
+    $ctrl.getAutomationPercent = getAutomationPercent;
+    $ctrl.isAutomating = isAutomating;
 }]);
