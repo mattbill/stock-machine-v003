@@ -73,18 +73,15 @@
         <div id="stockCalcs" class="form-horizontal">
 
             <stock-input-calc
-                stockobj="$ctrl.StocksServ.currStock"
                 key="estEpsGrowthRate"
                 label="Est 10yr EPS Growth Rate:"
             >Avg. of ROICs and Equities (weighted towards ROIC)</stock-input-calc>
             <stock-input-calc
-                stockobj="$ctrl.StocksServ.currStock"
                 key="analystsEstEarningsGrowthRate"
                 label="Analysts' Est Earnings Growth Rate:"
                 readonly="true"
             ><!--<a ng-click=$ctrl.openExternalUrl('analystsEstEarningsGrowthRate'); >From chart</a>--></stock-input-calc>
             <stock-input-calc
-                stockobj="$ctrl.StocksServ.currStock"
                 key="rule1GrowthRate"
                 label="Rule 1 Growth Rate:"
             >The smaller of these two</stock-input-calc>
@@ -94,17 +91,14 @@
 
 
             <stock-input-calc
-                stockobj="$ctrl.StocksServ.currStock"
                 key="defaultPe"
                 label="Default PE:"
             >Double Rule 1 Growth Rate</stock-input-calc>
             <stock-input-calc
-                stockobj="$ctrl.StocksServ.currStock"
                 key="medianPe"
                 label="Median PE:"
             ><!--<a ng-click=$ctrl.openExternalUrl('pe'); >Median PE</a>--></stock-input-calc>
             <stock-input-calc
-                stockobj="$ctrl.StocksServ.currStock"
                 key="rule1Pe"
                 label="Rule 1 PE:"
             >The smaller or the average of these two.</stock-input-calc>
@@ -114,17 +108,14 @@
 
 
             <stock-input-calc
-                stockobj="$ctrl.StocksServ.currStock"
                 key="currentEps"
                 label="Current EPS:"
             ></stock-input-calc>
             <stock-input-calc
-                stockobj="$ctrl.StocksServ.currStock"
                 key="est10yrEps"
                 label="Est EPS in 10 years:"
             >Current EPS grown for 10yrs at Rule 1 Growth Rate</stock-input-calc>
             <stock-input-calc
-                stockobj="$ctrl.StocksServ.currStock"
                 key="est10yrStockPrice"
                 label="Est Future Stock Price:"
             >Est EPS in 10 yrs * Rule 1 PE</stock-input-calc>
@@ -134,24 +125,20 @@
 
 
             <stock-input-calc
-                stockobj="$ctrl.StocksServ.currStock"
                 key="currentStockPrice"
                 label="Current Stock Price:"
             ></stock-input-calc>
             <stock-input-calc
-                stockobj="$ctrl.StocksServ.currStock"
                 key="stockStickerPrice"
                 label="Stock&nbsp;Sticker&nbsp;Price (What it's worth):"
                 readonly="true"
             >Est Future Stock Price / 4  (Allows for a 15% growth rate)</stock-input-calc>
             <stock-input-calc
-                stockobj="$ctrl.StocksServ.currStock"
                 key="mosStockPrice"
                 label="MOS&nbsp;Stock&nbsp;Price (50% Discount):"
                 readonly="true"
             >Half Stock Sticker Price</stock-input-calc>
             <stock-input-calc
-                stockobj="$ctrl.StocksServ.currStock"
                 key="percentageDiscount"
                 label="Percentage Discount:"
                 readonly="true"
@@ -159,7 +146,6 @@
                 ng-class="$ctrl.StocksServ.percentageDiscountCssClass( $ctrl.StocksServ.currStock )"
             >(Positive is good. Negative is bad.)</stock-input-calc>
             <stock-input-calc
-                stockobj="$ctrl.StocksServ.currStock"
                 key="paybackTime"
                 label="Payback Time:"
                 readonly="true"

@@ -9,7 +9,6 @@ angular.module('stockMachineApp').directive('stockInputCalc', ['StocksServ', fun
         scope: {
             key: '@',
             label: '@',
-            tooltip: '@',
             readonly: '@'
         },
         templateUrl: 'static/dev/modules/stock-machine/directives/stock-input-calc.html',
