@@ -42,9 +42,7 @@ angular.module('stockMachineApp').component('analysisPage', {
         function openRecentStockListModal() {
             $uibModal.open({
                 animation: true,
-                templateUrl: 'static/dev/modules/stock-machine/modals/recent-stock-list-modal.html',
-                controller: 'RecentStockListModalCtrl',
-                controllerAs: '$ctrl',
+                component: 'recentStockListModal',
                 size: 'lg'
             });
         }
