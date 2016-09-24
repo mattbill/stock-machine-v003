@@ -95,6 +95,9 @@ TODO@mattbill
 - Upgrade
 
     - Angular 1.5 + TypeScript
+    - Reorg files
+        - Modules
+        - Probably move views folder
     - Angular 2
     - MEAN stack
 - Later

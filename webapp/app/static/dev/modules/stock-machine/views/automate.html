@@ -16,9 +16,7 @@
 
         <div class="bold">{{$ctrl.getAutomationCount() || 0}} / {{$ctrl.NUM_STOCKS_TO_AUTOMATE}}</div>
         <div class="progress flex-this-1">
-            <div class="progress-bar" style="width:{{$ctrl.getAutomationPercent()}}%;">
-                {{$ctrl.getAutomationPercent()}}%
-            </div>
+            <uib-progressbar value="$ctrl.getAutomationPercent()">{{$ctrl.getAutomationPercent()}}%</uib-progressbar>
         </div>
 
         <small>

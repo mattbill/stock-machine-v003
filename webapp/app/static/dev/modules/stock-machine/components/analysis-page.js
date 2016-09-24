@@ -4,7 +4,7 @@
 angular.module('stockMachineApp').component('analysisPage', {
     templateUrl: 'static/dev/modules/stock-machine/views/analysis.html',
     bindings: {},
-    controller: function($modal, StocksServ) {
+    controller: function($uibModal, StocksServ) {
         'use strict';
         var $ctrl = this;
 
@@ -40,10 +40,11 @@ angular.module('stockMachineApp').component('analysisPage', {
         }
 
         function openRecentStockListModal() {
-            $modal.open({
+            $uibModal.open({
                 animation: true,
                 templateUrl: 'static/dev/modules/stock-machine/modals/recent-stock-list-modal.html',
-                controller: 'RecentStockListModalCtrl as $ctrl',
+                controller: 'RecentStockListModalCtrl',
+                controllerAs: '$ctrl',
                 size: 'lg'
             });
         }
