@@ -12,26 +12,18 @@ angular
         $stateProvider
             .state('analysis', {
                 url: "/analysis",
-                templateUrl: 'static/dev/modules/stock-machine/views/analysis.html',
-                controller: 'AnalysisCtrl',
-                controllerAs: '$ctrl'
+                template: '<analysis-page></analysis-page>'
             })
             .state('automate', {
                 url: "/automate",
-                templateUrl: 'static/dev/modules/stock-machine/views/automate.html',
-                controller: 'AutomateCtrl',
-                controllerAs: '$ctrl'
+                template: '<automate-page></automate-page>'
             })
             .state('login', {
                 url: "/login",
-                templateUrl: 'static/dev/modules/stock-machine/views/login.html',
-                controller: 'LoginCtrl',
-                controllerAs: '$ctrl'
+                template: '<login-page></login-page>'
             })
             .state('table', {
                 url: "/table",
-                templateUrl: 'static/dev/modules/stock-machine/views/data-table.html',
-                controller: 'dataTableCtrl',
-                controllerAs: '$ctrl'
+                template: '<datatable-page></datatable-page>'
             });
     }]);

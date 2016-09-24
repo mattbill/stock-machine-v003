@@ -84,6 +84,11 @@
     - Start upgrading to Angular 1.5
     - Clean up directives
 
+2016-09-24
+- Upgrade
+    - Migrating to Angular 1.5
+    - Replace controllers with components
+
 
 TODO@mattbill
 
