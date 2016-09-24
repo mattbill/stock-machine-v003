@@ -1,19 +1,24 @@
 
 
 //Analysis page
-angular.module('stockMachineApp').controller('AnalysisCtrl', ['$scope', '$modal', 'StocksServ', function($scope, $modal, StocksServ) {
+angular.module('stockMachineApp').controller('AnalysisCtrl', ['$modal', 'StocksServ', function($modal, StocksServ) {
     'use strict';
     var $ctrl = this;
 
 
     // PRIVATE
 
-    function init() {
-        $('#symbolInput').focus();
-    }
-
 
     // PUBLIC
+
+    var externalUrls = {
+        'yahooCharts': function(symbol) {
+            return 'http://finance.yahoo.com/echarts?s='+ symbol;
+        },
+        'yahooNews': function(symbol) {
+            return 'http://finance.yahoo.com/q/h?s='+ symbol +'+Headlines';
+        }
+    };
 
     function openExternalUrl(command) {
         var url;
@@ -41,17 +46,8 @@ angular.module('stockMachineApp').controller('AnalysisCtrl', ['$scope', '$modal'
     }
 
 
-    $ctrl.externalUrls = {
-        'yahooCharts': function(symbol) {
-            return 'http://finance.yahoo.com/echarts?s='+ symbol;
-        },
-        'yahooNews': function(symbol) {
-            return 'http://finance.yahoo.com/q/h?s='+ symbol +'+Headlines';
-        }
-    };
+    $ctrl.externalUrls = externalUrls;
     $ctrl.StocksServ = StocksServ;
     $ctrl.openExternalUrl = openExternalUrl;
     $ctrl.openRecentStockListModal = openRecentStockListModal;
-
-    init();
 }]);
