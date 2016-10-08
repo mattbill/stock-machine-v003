@@ -1,7 +1,7 @@
 
 
 //DataTable page
-angular.module('stockMachineApp').component('datatablePage', {
+angular.module('stockMachineApp').component('datatable', {
     templateUrl: 'static/dev/modules/stock-machine/views/data-table.html',
     bindings: {},
     controller: function($http, $scope) {

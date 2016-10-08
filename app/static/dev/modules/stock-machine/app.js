@@ -12,18 +12,18 @@ angular
         $stateProvider
             .state('analysis', {
                 url: "/analysis",
-                template: '<analysis-page></analysis-page>'
+                template: '<analysis></analysis>'
             })
             .state('automate', {
                 url: "/automate",
-                template: '<automate-page></automate-page>'
+                template: '<automate></automate>'
             })
             .state('login', {
                 url: "/login",
-                template: '<login-page></login-page>'
+                template: '<login></login>'
             })
-            .state('table', {
-                url: "/table",
-                template: '<datatable-page></datatable-page>'
+            .state('datatable', {
+                url: "/datatable",
+                template: '<datatable></datatable>'
             });
     }]);

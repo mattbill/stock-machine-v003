@@ -1,7 +1,7 @@
 
 angular.module('stockMachineApp').component('stockMetricsTable', {
     bindings: {},
-    templateUrl: 'static/dev/modules/stock-machine/directives/stock-metrics-table.html',
+    templateUrl: 'static/dev/modules/stock-machine/components/stock-metrics-table.html',
     controller: function($scope, StocksServ) {
         var $ctrl = this;
 

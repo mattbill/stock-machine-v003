@@ -1,7 +1,7 @@
 
 
 //Analysis page
-angular.module('stockMachineApp').component('analysisPage', {
+angular.module('stockMachineApp').component('analysis', {
     templateUrl: 'static/dev/modules/stock-machine/views/analysis.html',
     bindings: {},
     controller: function($uibModal, StocksServ) {

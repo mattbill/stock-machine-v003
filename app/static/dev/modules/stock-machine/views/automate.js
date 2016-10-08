@@ -1,7 +1,7 @@
 
 
 //Automation page
-angular.module('stockMachineApp').component('automatePage', {
+angular.module('stockMachineApp').component('automate', {
     templateUrl: 'static/dev/modules/stock-machine/views/automate.html',
     bindings: {},
     controller: function($http) {
