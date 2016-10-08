@@ -1,4 +1,9 @@
 
+//Manual bootstrapping
+angular.element(document).ready(function() {
+    angular.bootstrap(document, ['stockMachineApp']);
+});
+
 angular
     .module('stockMachineApp', [
         'ui.bootstrap',

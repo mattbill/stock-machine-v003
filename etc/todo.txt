@@ -97,6 +97,7 @@
         - replace:true
         - ng-include
     - Convert directives to components
+    - Manual bootstrapping
 
 TODO@mattbill
 
