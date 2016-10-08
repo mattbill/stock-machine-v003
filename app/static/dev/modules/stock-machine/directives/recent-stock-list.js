@@ -1,9 +1,8 @@
 
-angular.module('stockMachineApp').directive('recentStockList', [function() {
-    'use strict';
-
-    return {
-        restrict: 'E',
-        templateUrl: 'static/dev/modules/stock-machine/directives/recent-stock-list.html'
-    };
-}]);
+angular.module('stockMachineApp').component('recentStockList', {
+    templateUrl: 'static/dev/modules/stock-machine/directives/recent-stock-list.html',
+    controller: function(StocksServ) {
+        var $ctrl = this;
+        $ctrl.StocksServ = StocksServ;
+    }
+});
