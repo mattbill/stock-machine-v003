@@ -1,3 +1,4 @@
+declare var angular: any;
 
 //Controller for RecentStocks modal
 angular.module('stockMachineApp').component('recentStockListModal', {

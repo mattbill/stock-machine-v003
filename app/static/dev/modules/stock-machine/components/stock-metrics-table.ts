@@ -1,3 +1,4 @@
+declare var angular: any;
 
 angular.module('stockMachineApp').component('stockMetricsTable', {
     bindings: {},

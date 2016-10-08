@@ -1,4 +1,4 @@
-
+declare var angular: any;
 
 //Analysis page
 angular.module('stockMachineApp').component('analysis', {

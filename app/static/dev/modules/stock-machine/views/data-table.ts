@@ -1,4 +1,5 @@
-
+declare var $: any;
+declare var angular: any;
 
 //DataTable page
 angular.module('stockMachineApp').component('datatable', {

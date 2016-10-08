@@ -1,3 +1,5 @@
+declare var $: any;
+declare var angular: any;
 
 angular.module('stockMachineApp').component('simpleChart', {
     bindings: {

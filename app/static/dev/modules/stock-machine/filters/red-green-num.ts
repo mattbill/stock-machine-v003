@@ -1,3 +1,5 @@
+declare var angular: any;
+
 //Returns a CSS class for red vs green vs black numbers
 angular.module('stockMachineApp').filter('redGreenNum', ['UtilsServ', function(UtilsServ){
     'use strict';

@@ -7,6 +7,9 @@ node_modules/
 temp/
 venv/
 
+app/static/dev/modules/stock-machine/**/*.js
+app/static/dev/modules/stock-machine/**/*.js.map
+
 *.log
 *.pyc
 

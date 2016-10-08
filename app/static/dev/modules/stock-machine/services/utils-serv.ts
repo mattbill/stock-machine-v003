@@ -1,3 +1,6 @@
+declare var $: any;
+declare var _: any;
+declare var angular: any;
 
 angular.module('stockMachineApp').factory('UtilsServ', [function(){
     'use strict';

@@ -1,3 +1,4 @@
+declare var angular: any;
 
 //Manual bootstrapping
 angular.element(document).ready(function() {

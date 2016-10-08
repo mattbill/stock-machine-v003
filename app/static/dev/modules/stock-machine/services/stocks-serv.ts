@@ -1,3 +1,5 @@
+declare var $: any;
+declare var angular: any;
 
 angular.module('stockMachineApp').factory('StocksServ', ['$http', '$log', '$rootScope', '$timeout', 'UtilsServ', function($http, $log, $rootScope, $timeout, UtilsServ) {
     'use strict';
@@ -5,7 +7,7 @@ angular.module('stockMachineApp').factory('StocksServ', ['$http', '$log', '$root
 
     // PRIVATE
 
-    var stocksToAnalyze = [];
+    var stocksToAnalyze :any = [];
 
     function addToStockList(stockObj) {
         var symbol = stockObj.symbol;
@@ -47,8 +49,8 @@ angular.module('stockMachineApp').factory('StocksServ', ['$http', '$log', '$root
 
     function loadStocksFromLocalStorage() {
         $log.log('Loading stocks form localStorage');
-        if (localStorage.recentStocks) {
-            stockList = JSON.parse(localStorage.recentStocks);
+        if (localStorage['recentStocks']) {
+            stockList = JSON.parse(localStorage['recentStocks']);
         }
     }
 
@@ -63,7 +65,7 @@ angular.module('stockMachineApp').factory('StocksServ', ['$http', '$log', '$root
 
     function saveStocksToLocalStorage() {
         $log.log('Saving stocks to localStorage\n\n');
-        localStorage.recentStocks = JSON.stringify(angular.copy(stockList));
+        localStorage['recentStocks'] = JSON.stringify(angular.copy(stockList));
     }
 
 
@@ -73,7 +75,8 @@ angular.module('stockMachineApp').factory('StocksServ', ['$http', '$log', '$root
 
     function analyzeStocks() {
         $log.log('Starting stock $ctrl...');
-        stocksToAnalyze = StocksServ.stocksInput.toUpperCase().replace(/ /g, '').split(',').filter(function(val) { return val; });
+        var stockArr :any = StocksServ.stocksInput.toUpperCase().replace(/ /g, '').split(',');
+        stocksToAnalyze = stockArr.filter(function(val) { return val; });
         analyzeStocksArr();
     }
 
@@ -91,7 +94,6 @@ angular.module('stockMachineApp').factory('StocksServ', ['$http', '$log', '$root
     }
 
     function loadFromStockList(index) {
-        var index = index*1;
         var currStock = stockList[index];
         if (currStock) {
             StocksServ.currStock = currStock;
@@ -158,6 +160,7 @@ angular.module('stockMachineApp').factory('StocksServ', ['$http', '$log', '$root
 
     init();
     var StocksServ = {
+        currStock: null,
         stocksInput: '',
         stockList: stockList,
         analyzeStocks: analyzeStocks,

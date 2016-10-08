@@ -1,4 +1,4 @@
-
+declare var angular: any;
 
 //Automation page
 angular.module('stockMachineApp').component('automate', {

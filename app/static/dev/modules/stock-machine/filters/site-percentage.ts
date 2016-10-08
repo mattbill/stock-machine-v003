@@ -1,3 +1,5 @@
+declare var angular: any;
+
 //Format number as percent
 angular.module('stockMachineApp').filter('sitePercent', ['$filter', 'UtilsServ', function($filter, UtilsServ){
     'use strict';

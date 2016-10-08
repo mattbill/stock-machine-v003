@@ -1,4 +1,4 @@
-
+declare var angular: any;
 
 angular.module('stockMachineApp').component('login', {
     templateUrl: 'static/dev/modules/stock-machine/views/login.html',

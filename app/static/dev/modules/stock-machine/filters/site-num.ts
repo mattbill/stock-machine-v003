@@ -1,3 +1,5 @@
+declare var angular: any;
+
 //Format financial number
 angular.module('stockMachineApp').filter('siteNum', ['$filter', 'UtilsServ', function($filter, UtilsServ){
     'use strict';
