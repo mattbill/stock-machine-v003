@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Stock Machine</title>
+
+    <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="bower-components.min.css" rel="stylesheet"/>
+
+    <link href="css/analysis.less" rel="stylesheet/less">
+    <link href="css/flexbox.less" rel="stylesheet/less">
+    <link href="css/login.less" rel="stylesheet/less">
+    <link href="css/main.less" rel="stylesheet/less">
+    <link href="css/misc.less" rel="stylesheet/less">
+    <link href="css/print.less" rel="stylesheet/less">
+    <script src="bower_components/less/dist/less.min.js"></script>
+</head>
+<body>
+
+    <header-nav></header-nav>
+    <div class="container-fluid" ui-view></div>
+
+
+    <script src="bower-components.min.js"></script>
+
+    <script src="modules/stock-machine/app.js"></script>
+    <script src="modules/stock-machine/components/header-nav.js"></script>
+    <script src="modules/stock-machine/components/recent-stock-list.js"></script>
+    <script src="modules/stock-machine/components/simple-chart.js"></script>
+    <script src="modules/stock-machine/components/stock-input-calc.js"></script>
+    <script src="modules/stock-machine/components/stock-metrics-table.js"></script>
+    <script src="modules/stock-machine/directives/xng-enter.js"></script>
+    <script src="modules/stock-machine/filters/red-green-num.js"></script>
+    <script src="modules/stock-machine/filters/site-num.js"></script>
+    <script src="modules/stock-machine/filters/site-percentage.js"></script>
+    <script src="modules/stock-machine/modals/recent-stock-list-modal.js"></script>
+    <script src="modules/stock-machine/services/stocks-serv.js"></script>
+    <script src="modules/stock-machine/services/utils-serv.js"></script>
+    <script src="modules/stock-machine/views/analysis.js"></script>
+    <script src="modules/stock-machine/views/automate.js"></script>
+    <script src="modules/stock-machine/views/data-table.js"></script>
+    <script src="modules/stock-machine/views/login.js"></script>
+</body>
+</html>

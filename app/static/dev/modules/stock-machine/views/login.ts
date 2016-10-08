@@ -1,7 +1,7 @@
 declare var angular: any;
 
 angular.module('stockMachineApp').component('login', {
-    templateUrl: 'static/dev/modules/stock-machine/views/login.html',
+    templateUrl: '/modules/stock-machine/views/login.html',
     bindings: {},
     controller: function() {
         'use strict';

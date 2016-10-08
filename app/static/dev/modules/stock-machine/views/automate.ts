@@ -2,7 +2,7 @@ declare var angular: any;
 
 //Automation page
 angular.module('stockMachineApp').component('automate', {
-    templateUrl: 'static/dev/modules/stock-machine/views/automate.html',
+    templateUrl: '/modules/stock-machine/views/automate.html',
     bindings: {},
     controller: function($http) {
         'use strict';

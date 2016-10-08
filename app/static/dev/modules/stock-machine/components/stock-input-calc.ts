@@ -7,7 +7,7 @@ angular.module('stockMachineApp').component('stockInputCalc', {
         label: '@',
         readonly: '@'
     },
-    templateUrl: 'static/dev/modules/stock-machine/components/stock-input-calc.html',
+    templateUrl: '/modules/stock-machine/components/stock-input-calc.html',
     controller: function(StocksServ) {
         var $ctrl = this;
 

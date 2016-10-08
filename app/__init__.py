@@ -4,7 +4,9 @@ import flask
 import os
 from models.model_helper import ModelHelper
 
-app = flask.Flask(__name__, template_folder='templates')
+# @TODO@mattbillard finish
+# app = flask.Flask(__name__, template_folder='templates', static_url_path="", static_folder="static/dev")
+app = flask.Flask(__name__, template_folder='templates', static_url_path="", static_folder="static/prod")
 
 
 app.config.update(dict(

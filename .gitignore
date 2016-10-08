@@ -1,6 +1,6 @@
 
 # PROJECT
-app/static/bower_components/
+app/static/dev/bower_components/
 app/static/prod/
 data/*.db
 node_modules/

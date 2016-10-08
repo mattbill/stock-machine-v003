@@ -5,7 +5,7 @@ angular.module('stockMachineApp').component('simpleChart', {
     bindings: {
         data: '='
     },
-    templateUrl: 'static/dev/modules/stock-machine/components/simple-chart.html',
+    templateUrl: '/modules/stock-machine/components/simple-chart.html',
     controller: function($scope, $element) {
         var $ctrl = this;
 
