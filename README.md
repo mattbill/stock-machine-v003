@@ -10,5 +10,6 @@
 - `cd webapp`
 - `npm install`
 - `bower install`
+- `gulp`
 
 - `python webapp/server.py`

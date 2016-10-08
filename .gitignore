@@ -1,12 +1,13 @@
 
 # PROJECT
-bower_components/
-node_modules/
-venv/
-*.db
+webapp/app/static/bower_components/
+webapp/app/static/dist/
+webapp/data/*.db
+webapp/node_modules/
+webapp/temp/
+webapp/venv/
 
-/webapp/temp/
-/webapp/*.log
+webapp/*.log
 *.pyc
 
 
