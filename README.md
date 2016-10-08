@@ -1,15 +1,16 @@
 # stock-machine-v003
 
-### Run Application:
+### Setup
 - `sudo easy_install virtualenv`
 - `virtualenv venv`
 - `source venv/bin/activate`
 - `pip install https://github.com/pallets/flask/tarball/master`
-- `pip install -r webapp/requirements.txt`
+- `pip install -r requirements.txt`
 
-- `cd webapp`
 - `npm install`
 - `bower install`
 - `gulp`
 
-- `python webapp/server.py`
+### Run
+- `source venv/bin/activate`
+- `python server.py`

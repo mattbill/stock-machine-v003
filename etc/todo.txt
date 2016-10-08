@@ -90,6 +90,10 @@
     - Replace controllers with components
     - Update Angular UI Router, Angular UI Sortable, Angular UI Bootstrap
 
+2016-10-08
+- Clean up:
+    - Move files in webapp/ up one directory
+    - Update package.json, readme.md
 
 TODO@mattbill
 
