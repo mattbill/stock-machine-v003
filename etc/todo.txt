@@ -93,7 +93,9 @@
     - Move files in webapp/ up one directory
     - Update package.json, readme.md
 - Upgrade to Angular 1.5
-    - Remove incompatible features (e.g. replace:true)
+    - Remove incompatible features
+        - replace:true
+        - ng-include
     - Convert directives to components
 
 TODO@mattbill
