@@ -9,7 +9,8 @@
 
 - `npm install`
 - `bower install`
-- `gulp`
+- `gulp dev`
+- `gulp prod`
 
 ### Run
 - `source venv/bin/activate`

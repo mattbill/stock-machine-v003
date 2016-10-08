@@ -1,12 +1,17 @@
 module.exports = function() {
     var config = {
-        temp: './app/static/dist',
-        css: [
-            //'./app/static/dev/css/*.css',
-            //"!./app/static/dev/css/print.css",
+        dev: './app/static/dev',
+        prod: {
+            css: './app/static/prod/css',
+            fonts: './app/static/prod/fonts',
+            html: './app/static/prod/modules',
+            js: './app/static/prod/scripts'
+        },
+        tmp: './tmp',
+        bowerCssFiles: [
             './app/static/bower_components/bootstrap/dist/css/*.min.css'
         ],
-        js: [
+        bowerJsFiles: [
             './app/static/bower_components/jquery/dist/jquery.min.js',
             './app/static/bower_components/jquery-ui/jquery-ui.min.js',
             './app/static/bower_components/bootstrap/dist/js/bootstrap.min.js',
@@ -17,6 +22,26 @@ module.exports = function() {
             './app/static/bower_components/angular-smart-table/dist/smart-table.min.js',
             './app/static/bower_components/highcharts/highcharts.js',
             './app/static/bower_components/lodash/dist/lodash.js'
+        ],
+        clean: [
+            './app/static/prod/**',
+            './tmp/**'
+        ],
+        cssFiles: [
+            './app/static/bower_components/font-awesome/css/font-awesome.min.css',
+            './tmp/less.css'
+        ],
+        fontFiles: [
+            './app/static/bower_components/font-awesome/fonts/**'
+        ],
+        htmlFiles: [
+            './app/static/dev/modules/**/*.html'
+        ],
+        jsFiles: [
+            './app/static/dev/modules/**/*.js'
+        ],
+        lessFiles: [
+            './app/static/dev/css/*.less'
         ]
     };
     return config;

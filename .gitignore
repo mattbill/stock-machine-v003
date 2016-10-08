@@ -1,12 +1,15 @@
 
 # PROJECT
 app/static/bower_components/
-app/static/dist/
+app/static/prod/
 data/*.db
 node_modules/
 temp/
+tmp/
 venv/
 
+app/static/dev/bower-components.min.js
+app/static/dev/bower-components.min.css
 app/static/dev/modules/stock-machine/**/*.js
 app/static/dev/modules/stock-machine/**/*.js.map
 
