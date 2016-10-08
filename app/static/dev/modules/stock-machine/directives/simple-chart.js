@@ -4,7 +4,6 @@ angular.module('stockMachineApp').directive('simpleChart', [function() {
 
     return {
         restrict: 'E',
-        replace: true,
         scope: {
             data: '='
         },

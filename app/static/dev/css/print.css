@@ -9,5 +9,5 @@ body { zoom:0.70 !important; }
 #recent-stock-list { display:none; }
 #input-area { display:none; }
 
-#stock-metrics-table th, #stock-metrics-table td { padding:0px; !important; }
-#stock-metrics-table .graph { zoom:0.65; }
+stock-metrics-table th, stock-metrics-table td { padding:0px; !important; }
+stock-metrics-table .graph { zoom:0.65; }

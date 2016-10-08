@@ -80,13 +80,11 @@
     - It would be better to try scraping msn
 
 2016-09-17
-- Upgrade
-    - Start upgrading to Angular 1.5
+- Upgrade to Angular 1.5
     - Clean up directives
 
 2016-09-24
-- Upgrade
-    - Migrating to Angular 1.5
+- Upgrade to Angular 1.5
     - Replace controllers with components
     - Update Angular UI Router, Angular UI Sortable, Angular UI Bootstrap
 
@@ -94,6 +92,8 @@
 - Clean up:
     - Move files in webapp/ up one directory
     - Update package.json, readme.md
+- Upgrade to Angular 1.5
+    - Remove incompatible features (e.g. replace:true)
 
 TODO@mattbill
 

@@ -2,9 +2,9 @@ module.exports = function() {
     var config = {
         temp: './app/static/dist',
         css: [
-            './app/static/dev/css/*.css',
-            './app/static/bower_components/bootstrap/dist/css/*.min.css',
-            "!./app/static/dev/css/print.css"
+            //'./app/static/dev/css/*.css',
+            //"!./app/static/dev/css/print.css",
+            './app/static/bower_components/bootstrap/dist/css/*.min.css'
         ],
         js: [
             './app/static/bower_components/jquery/dist/jquery.min.js',

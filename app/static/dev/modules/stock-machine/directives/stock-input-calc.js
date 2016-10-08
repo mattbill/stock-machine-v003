@@ -4,7 +4,6 @@ angular.module('stockMachineApp').directive('stockInputCalc', ['StocksServ', fun
 
     return {
         restrict: 'E',
-        replace: true,
         transclude: true,
         scope: {
             key: '@',

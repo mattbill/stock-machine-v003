@@ -4,7 +4,6 @@ angular.module('stockMachineApp').directive('stockMetricsTable', ['StocksServ', 
 
     return {
         restrict: 'E',
-        replace: true,
         scope: {},
         templateUrl: 'static/dev/modules/stock-machine/directives/stock-metrics-table.html',
         controllerAs: '$ctrl',
