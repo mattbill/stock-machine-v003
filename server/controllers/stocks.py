@@ -1,5 +1,5 @@
 import flask
-from app import models
+from server import models
 import json
 
 

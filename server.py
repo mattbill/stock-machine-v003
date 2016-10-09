@@ -1,6 +1,6 @@
 print '\nStarting server'
 
-from app import app
+from server import server
 
 if __name__ == '__main__':
-    app.run(port=app.config['PORT'], debug=app.config['DEBUG'])
+    server.run(port=server.config['PORT'], debug=server.config['DEBUG'])

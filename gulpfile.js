@@ -20,7 +20,7 @@ gulp.task('bower-js', function() {
 });
 
 gulp.task('bower-css-prod', function() {
-    return gulp.src('./app/static/dev/bower-components.min.css')
+    return gulp.src('./public/dev/bower-components.min.css')    //TODO@mattbillard
         .pipe(gulp.dest(config.prod.css));
 });
 
@@ -32,7 +32,7 @@ gulp.task('bower-css', function() {
 });
 
 gulp.task('bower-js-prod', function() {
-    return gulp.src('./app/static/dev/bower-components.min.js')
+    return gulp.src('./public/dev/bower-components.min.js')    //TODO@mattbillard
         .pipe(gulp.dest(config.prod.js));
 });
 
@@ -81,7 +81,7 @@ gulp.task('less', function(){
 });
 
 gulp.task('typescript', function() {
-    //TODO
+    //TODO@mattbillard
 });
 
 //----------------------------------------

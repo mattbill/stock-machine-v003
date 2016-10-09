@@ -1,4 +1,4 @@
-import app
+import server
 import flask
 import os
 import sqlite3
@@ -16,7 +16,7 @@ class ModelHelper:
 
     @staticmethod
     def connect_db():
-        rv = sqlite3.connect(app.app.config['DATABASE'])
+        rv = sqlite3.connect(server.server.config['DATABASE'])
         rv.row_factory = sqlite3.Row
         return rv
 
@@ -65,13 +65,13 @@ class ModelHelper:
             print('Initializing DB')
             db = ModelHelper.connect_db()
 
-            schema = os.path.join(app.app.root_path, '../data/schema_stocks.sql')
-            with app.app.open_resource(schema, mode='r') as f:
+            schema = os.path.join(server.server.root_path, '../data/schema_stocks.sql')
+            with server.server.open_resource(schema, mode='r') as f:
                 db.cursor().executescript(f.read())
             db.commit()
 
-            data = os.path.join(app.app.root_path, '../data/data_stocks.sql')
-            with app.app.open_resource(data, mode='r') as f:
+            data = os.path.join(server.server.root_path, '../data/data_stocks.sql')
+            with server.server.open_resource(data, mode='r') as f:
                 db.cursor().executescript(f.read())
             db.commit()
 

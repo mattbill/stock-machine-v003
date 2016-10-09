@@ -92,6 +92,7 @@
 - Clean up:
     - Move files in webapp/ up one directory
     - Update package.json, readme.md
+    - Reorganize to create clear server/, public/dev/, and public/prod/ dirs
 - Upgrade to Angular 1.5
     - Remove incompatible features
         - replace:true

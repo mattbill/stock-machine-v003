@@ -9,7 +9,6 @@
 
 - `npm install`
 - `bower install`
-- `gulp dev`
 - `gulp prod`
 
 ### Run
