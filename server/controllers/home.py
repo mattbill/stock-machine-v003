@@ -1,11 +1,14 @@
 import flask
+import os
+env = os.environ.get('env').strip()
 
 blueprint = flask.Blueprint('home_blueprint', __name__)
 
-
-# @TODO@mattbillard finish
-
 @blueprint.route('/')
 def home():
-    return flask.render_template('dev.html')
-    # return flask.render_template('prod.html')
+    if env == "dev":
+        page = "dev.html"
+    else:
+        page = "prod.html"
+
+    return flask.render_template(page)
