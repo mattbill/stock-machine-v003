@@ -2,7 +2,7 @@ module.exports = function() {
     var config = {
         dev: './public/dev',
         prod: {
-            css: './public/prod/css',
+            css: './public/prod/styles',
             fonts: './public/prod/fonts',
             html: './public/prod/modules',
             js: './public/prod/scripts'
@@ -43,7 +43,7 @@ module.exports = function() {
             './public/dev/modules/**/*.js'
         ],
         lessFiles: [
-            './public/dev/css/*.less'
+            './public/dev/styles/*.less'
         ],
         typeScriptFiles: [
             './public/dev/modules/**/*.ts'
