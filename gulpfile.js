@@ -14,26 +14,26 @@ var $ = require('gulp-load-plugins')(),
     uglify = require('gulp-uglify');
 
 
-gulp.task('bower-js', function() {
-    return gulp.src(config.bowerJsFiles)
-        .pipe($.concat('bower-components.min.js'))
-        .pipe(gulp.dest(config.dev));
-});
-
-gulp.task('bower-css-prod', function() {
-    return gulp.src('./public/dev/bower-components.min.css')
-        .pipe(gulp.dest(config.prod.css));
-});
-
 
 gulp.task('bower-css', function() {
     return gulp.src(config.bowerCssFiles)
         .pipe($.concat('bower-components.min.css'))
-        .pipe(gulp.dest(config.dev));
+        .pipe(gulp.dest(config.bower));
+});
+
+gulp.task('bower-css-prod', function() {
+    return gulp.src(config.bower+'/bower-components.min.css')
+        .pipe(gulp.dest(config.prod.css));
+});
+
+gulp.task('bower-js', function() {
+    return gulp.src(config.bowerJsFiles)
+        .pipe($.concat('bower-components.min.js'))
+        .pipe(gulp.dest(config.bower));
 });
 
 gulp.task('bower-js-prod', function() {
-    return gulp.src('./public/dev/bower-components.min.js')
+    return gulp.src(config.bower+'/bower-components.min.js')
         .pipe(gulp.dest(config.prod.js));
 });
 
@@ -94,6 +94,7 @@ gulp.task('watch:typescript', function() {
     gulp.watch([config.typeScriptFiles], ['typescript'])
 });
 
+
 //----------------------------------------
 
 //Use the tasks below this line
@@ -112,11 +113,11 @@ gulp.task('prod', function() {
         'dev',
         [
             'html',
+            'fonts',
             'bower-css-prod',
             'bower-js-prod',
-            'js',
-            'fonts',
-            'css'
+            'css',
+            'js'
         ]);
 });
 

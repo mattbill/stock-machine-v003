@@ -7,8 +7,6 @@ tmp/
 venv/
 
 public/dev/bower_components/
-public/dev/bower-components.min.js
-public/dev/bower-components.min.css
 public/dev/modules/stock-machine/**/*.js
 public/dev/modules/stock-machine/**/*.js.map
 public/prod/

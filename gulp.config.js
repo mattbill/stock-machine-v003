@@ -8,6 +8,8 @@ module.exports = function() {
             js: './public/prod/scripts'
         },
         tmp: './tmp',
+
+        bower: './public/dev/bower_components',
         bowerCssFiles: [
             './public/dev/bower_components/bootstrap/dist/css/*.min.css'
         ],
