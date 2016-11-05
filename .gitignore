@@ -13,7 +13,6 @@ public/dev/modules/stock-machine/**/*.js
 public/dev/modules/stock-machine/**/*.js.map
 public/prod/
 
-dev
 *.pyc
 
 

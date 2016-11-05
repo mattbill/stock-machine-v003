@@ -9,8 +9,9 @@ var $ = require('gulp-load-plugins')(),
     minify = require('gulp-minify-css'),
     ngAnnotate = require('gulp-ng-annotate'),
     rename = require('gulp-rename'),
+    sourcemaps = require('gulp-sourcemaps'),
+    ts = require('gulp-typescript'),
     uglify = require('gulp-uglify');
-
 
 
 gulp.task('bower-js', function() {
@@ -20,7 +21,7 @@ gulp.task('bower-js', function() {
 });
 
 gulp.task('bower-css-prod', function() {
-    return gulp.src('./public/dev/bower-components.min.css')    //TODO@mattbillard
+    return gulp.src('./public/dev/bower-components.min.css')
         .pipe(gulp.dest(config.prod.css));
 });
 
@@ -32,7 +33,7 @@ gulp.task('bower-css', function() {
 });
 
 gulp.task('bower-js-prod', function() {
-    return gulp.src('./public/dev/bower-components.min.js')    //TODO@mattbillard
+    return gulp.src('./public/dev/bower-components.min.js')
         .pipe(gulp.dest(config.prod.js));
 });
 
@@ -81,7 +82,16 @@ gulp.task('less', function(){
 });
 
 gulp.task('typescript', function() {
-    //TODO@mattbillard
+    return gulp.src(config.typeScriptFiles)
+        .pipe(sourcemaps.init())
+        .pipe(ts({}))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest(config.typeScriptDest))
+
+});
+
+gulp.task('watch:typescript', function() {
+    gulp.watch([config.typeScriptFiles], ['typescript'])
 });
 
 //----------------------------------------
@@ -91,8 +101,8 @@ gulp.task('typescript', function() {
 gulp.task('dev',
     [
         'bower-css',
-        'bower-js'
-        //'typescript'
+        'bower-js',
+        'typescript'
     ]
 );
 
@@ -109,3 +119,5 @@ gulp.task('prod', function() {
             'css'
         ]);
 });
+
+gulp.task('watch', ['watch:typescript']);

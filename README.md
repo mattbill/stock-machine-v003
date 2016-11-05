@@ -13,6 +13,12 @@ bower install
 gulp prod
 ````
 
+### Development
+Run the following and then work normally
+```
+gulp watch
+```
+
 ### Run
 Run either...
 ````

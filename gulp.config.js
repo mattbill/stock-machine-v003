@@ -42,7 +42,11 @@ module.exports = function() {
         ],
         lessFiles: [
             './public/dev/css/*.less'
-        ]
+        ],
+        typeScriptFiles: [
+            './public/dev/modules/**/*.ts'
+        ],
+        typeScriptDest: './public/dev/modules'
     };
     return config;
-}
+};
