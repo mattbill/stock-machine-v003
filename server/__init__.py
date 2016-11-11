@@ -15,7 +15,7 @@ else:
 
 print static_folder
 
-server = flask.Flask(__name__, template_folder='templates', static_url_path="", static_folder=static_folder)
+server = flask.Flask(__name__, template_folder='views', static_url_path="", static_folder=static_folder)
 server.config.update(dict(
         DATABASE=os.path.join(server.root_path, '../data/stocks.db'),
         DEBUG=debug,
