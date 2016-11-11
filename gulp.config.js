@@ -1,54 +1,136 @@
 module.exports = function() {
-    var config = {
-        dev: './public/dev',
-        prod: {
-            css: './public/prod/styles',
-            fonts: './public/prod/fonts',
-            html: './public/prod/modules',
-            js: './public/prod/scripts'
-        },
-        tmp: './tmp',
-
-        bower: './public/dev/bower_components',
-        bowerCssFiles: [
-            './public/dev/bower_components/bootstrap/dist/css/*.min.css'
-        ],
-        bowerJsFiles: [
-            './public/dev/bower_components/jquery/dist/jquery.min.js',
-            './public/dev/bower_components/jquery-ui/jquery-ui.min.js',
-            './public/dev/bower_components/bootstrap/dist/js/bootstrap.min.js',
-            './public/dev/bower_components/angular/angular.min.js',
-            './public/dev/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
-            './public/dev/bower_components/angular-ui-router/release/angular-ui-router.min.js',
-            './public/dev/bower_components/angular-ui-sortable/sortable.min.js',
-            './public/dev/bower_components/angular-smart-table/dist/smart-table.min.js',
-            './public/dev/bower_components/highcharts/highcharts.js',
-            './public/dev/bower_components/lodash/dist/lodash.js'
-        ],
-        clean: [
-            './public/prod/**',
-            './tmp/**'
-        ],
+    var bowerRoot = './public/dev/bower_components';
+    var bower = {
         cssFiles: [
-            './public/dev/bower_components/font-awesome/css/font-awesome.min.css',
-            './tmp/less.css'
-        ],
-        fontFiles: [
-            './public/dev/bower_components/font-awesome/fonts/**'
-        ],
-        htmlFiles: [
-            './public/dev/modules/**/*.html'
+            bowerRoot+'/bootstrap/dist/css/*.min.css',
+            bowerRoot+'/font-awesome/css/font-awesome.min.css'
         ],
         jsFiles: [
-            './public/dev/modules/**/*.js'
-        ],
-        lessFiles: [
-            './public/dev/styles/*.less'
-        ],
-        typeScriptFiles: [
-            './public/dev/modules/**/*.ts'
-        ],
-        typeScriptDest: './public/dev/modules'
+            bowerRoot+'/jquery/dist/jquery.min.js',
+            bowerRoot+'/jquery-ui/jquery-ui.min.js',
+            bowerRoot+'/bootstrap/dist/js/bootstrap.min.js',
+            bowerRoot+'/angular/angular.min.js',
+            bowerRoot+'/angular-bootstrap/ui-bootstrap-tpls.min.js',
+            bowerRoot+'/angular-ui-router/release/angular-ui-router.min.js',
+            bowerRoot+'/angular-ui-sortable/sortable.min.js',
+            bowerRoot+'/angular-smart-table/dist/smart-table.min.js',
+            bowerRoot+'/highcharts/highcharts.js',
+            bowerRoot+'/lodash/dist/lodash.js'
+        ]
     };
+
+    var inject = {
+        target: 'server/views/base.html',
+        dest: 'server/views',
+        devFileName: 'dev.html',
+        prodFileName: 'prod.html'
+    };
+
+
+
+    var devRoot = './public/dev';
+    var dev = {
+        root:           devRoot+'',
+        //--------------------
+        fontFiles:     [bowerRoot+'/font-awesome/fonts/**'],
+        htmlFiles:     [devRoot+'/modules/**/*.html'],
+        //--------------------
+        stylesDir:      devRoot+'/styles',
+        cssFiles:      [devRoot+'/styles/**/*.css'],
+        lessFiles:     [devRoot+'/styles/**/*.less'],
+        cssFileName:    'styles.css',
+        //--------------------
+        scriptsDir:     devRoot+'/modules',
+        jsFiles:       [devRoot+'/modules/**/*.js'],
+        tsFiles:       [devRoot+'/modules/**/*.ts']
+    };
+
+
+
+    var prodRoot = './public/prod';
+    var prod = {
+        root:           prodRoot,
+        //--------------------
+        fontsDir:       prodRoot+'/fonts',
+        htmlFiles:      prodRoot+'/modules',
+        //--------------------
+        stylesDir:      prodRoot+'/styles',
+        cssFiles:      [prodRoot+'/styles/**/*.min.css'],
+        cssFileName:    'styles.css',
+        cssFileNameMin: 'styles.min.css',
+        //--------------------
+        scriptsDir:     prodRoot+'/scripts',
+        jsFiles:       [prodRoot+'/scripts/**/*.min.js'],
+        jsFileName:     'scripts.js',
+        jsFileNameMin:  'scripts.min.js'
+    };
+
+
+
+
+    var config = {
+        clean: Array.prototype.concat(
+            dev.cssFiles,
+            dev.jsFiles,
+            prod.root
+        ),
+        dev: {
+            dir: dev.root,
+            compile: {
+                less: {
+                    src: dev.lessFiles,
+                    dest: dev.stylesDir,
+                    fileName: dev.cssFileName
+                },
+                ts: {
+                    src: dev.tsFiles,
+                    dest: dev.scriptsDir
+                }
+            },
+            inject: {
+                src: Array.prototype.concat(
+                    bower.cssFiles,
+                    bower.jsFiles,
+                    dev.cssFiles,
+                    dev.jsFiles
+                ),
+                target: inject.target,
+                dest: inject.dest,
+                filename: inject.devFileName
+            }
+        },
+        prod: {
+            dir: prod.root,
+            copy: {
+                fonts: {
+                    src: dev.fontFiles,
+                    dest: prod.fontsDir
+                },
+                html: {
+                    src: dev.htmlFiles,
+                    dest: prod.htmlFiles
+                }
+            },
+            css: {
+                src: Array.prototype.concat(bower.cssFiles, dev.cssFiles),
+                dest: prod.stylesDir,
+                fileName: prod.cssFileName,
+                fileNameMin: prod.cssFileNameMin
+            },
+            js: {
+                src: Array.prototype.concat(bower.jsFiles, dev.jsFiles),
+                dest: prod.scriptsDir,
+                fileName: prod.jsFileName,
+                fileNameMin: prod.jsFileNameMin
+            },
+            inject: {
+                src: Array.prototype.concat(prod.cssFiles, prod.jsFiles),
+                target: inject.target,
+                dest: inject.dest,
+                fileName: inject.prodFileName
+            }
+        }
+    };
+
     return config;
 };

@@ -13,6 +13,8 @@ npm install tsc -g
 
 npm install
 bower install
+
+gulp dev
 gulp prod
 ````
 
@@ -27,15 +29,4 @@ Run either...
 ````
 bat/run_dev 
 bat/run_prod
-````
-Or do it manually with either of the following...  
-**dev**
-````
-source venv/bin/activate  
-env=dev python server.py
-````
-**prod**
-````
-source venv/bin/activate  
-env=prod python server.py  
 ````
