@@ -17,12 +17,11 @@ var $ = require('gulp-load-plugins')(),
     uglify = require('gulp-uglify');
 
 
-gulp.task('clean', function() {
-    return del(config.clean);
-});
-
-
 //-------------------- dev --------------------
+
+gulp.task('clean:dev', function() {
+    return del(config.dev.clean);
+});
 
 gulp.task('compile:ts', function() {
     var obj = config.dev.compile.ts;
@@ -60,6 +59,10 @@ gulp.task('inject:dev', function () {
 
 
 //-------------------- prod --------------------
+
+gulp.task('clean:prod', function() {
+    return del(config.prod.clean);
+});
 
 gulp.task('copy:fonts', function() {
     var obj = config.prod.copy.fonts;
@@ -110,10 +113,10 @@ gulp.task('inject:prod', function () {
 //-------------------- watch --------------------
 
 gulp.task('watch:less', function() {
-    gulp.watch([config.dev.compile.less.src], ['less'])
+    gulp.watch([config.dev.compile.less.src], ['compile:less'])
 });
-gulp.task('watch:typescript', function() {
-    gulp.watch([config.dev.compile.ts.src], ['ts'])
+gulp.task('watch:ts', function() {
+    gulp.watch([config.dev.compile.ts.src], ['compile:ts'])
 });
 
 
@@ -123,7 +126,7 @@ gulp.task('watch:typescript', function() {
 
 gulp.task('dev', function() {
     $.runSequence(
-        'clean',
+        'clean:dev',
         [
             'compile:less',
             'compile:ts'
@@ -134,6 +137,7 @@ gulp.task('dev', function() {
 
 gulp.task('prod', function() {
     $.runSequence(
+        'clean:prod',
         [
             'copy:fonts',
             'copy:html',
@@ -144,4 +148,4 @@ gulp.task('prod', function() {
     );
 });
 
-gulp.task('watch', ['watch:less', 'watch:typescript']);
+gulp.task('watch', ['watch:less', 'watch:ts']);

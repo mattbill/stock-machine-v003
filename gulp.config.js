@@ -69,13 +69,12 @@ module.exports = function() {
 
 
     var config = {
-        clean: Array.prototype.concat(
-            dev.cssFiles,
-            dev.jsFiles,
-            prod.root
-        ),
         dev: {
             dir: dev.root,
+            clean: Array.prototype.concat(
+                dev.cssFiles,
+                dev.jsFiles
+            ),
             compile: {
                 less: {
                     src: dev.lessFiles,
@@ -101,6 +100,7 @@ module.exports = function() {
         },
         prod: {
             dir: prod.root,
+            clean: prod.root,
             copy: {
                 fonts: {
                     src: dev.fontFiles,

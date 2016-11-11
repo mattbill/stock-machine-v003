@@ -116,6 +116,11 @@
 
 2016-11-11
 - TypeScript
+    - Try using npm run tst to compiling ts to js
+- Gulp
+    - Redo and simplify gulp file
+    - Dev now does all compiling (less, ts)
+    - Prod now does all concat+min (css, js)
 
 
 TODO@mattbillard
