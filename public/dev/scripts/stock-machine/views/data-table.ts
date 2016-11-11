@@ -3,7 +3,7 @@ declare var angular: any;
 
 //DataTable page
 angular.module('stockMachineApp').component('datatable', {
-    templateUrl: '/modules/stock-machine/views/data-table.html',
+    templateUrl: '/scripts/stock-machine/views/data-table.html',
     bindings: {},
     controller: function($http, $scope) {
         'use strict';

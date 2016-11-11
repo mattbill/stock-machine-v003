@@ -2,7 +2,7 @@ declare var angular: any;
 
 //Analysis page
 angular.module('stockMachineApp').component('analysis', {
-    templateUrl: '/modules/stock-machine/views/analysis.html',
+    templateUrl: '/scripts/stock-machine/views/analysis.html',
     bindings: {},
     controller: function($uibModal, StocksServ) {
         'use strict';

@@ -2,7 +2,7 @@ declare var angular: any;
 
 angular.module('stockMachineApp').component('stockMetricsTable', {
     bindings: {},
-    templateUrl: '/modules/stock-machine/components/stock-metrics-table.html',
+    templateUrl: '/scripts/stock-machine/components/stock-metrics-table.html',
     controller: function($scope, StocksServ) {
         var $ctrl = this;
 

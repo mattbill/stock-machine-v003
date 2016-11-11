@@ -33,16 +33,16 @@ module.exports = function() {
         root:           devRoot+'',
         //--------------------
         fontFiles:     [bowerRoot+'/font-awesome/fonts/**'],
-        htmlFiles:     [devRoot+'/modules/**/*.html'],
+        htmlFiles:     [devRoot+'/scripts/**/*.html'],
         //--------------------
         stylesDir:      devRoot+'/styles',
         cssFiles:      [devRoot+'/styles/**/*.css'],
         lessFiles:     [devRoot+'/styles/**/*.less'],
         cssFileName:    'styles.css',
         //--------------------
-        scriptsDir:     devRoot+'/modules',
-        jsFiles:       [devRoot+'/modules/**/*.js'],
-        tsFiles:       [devRoot+'/modules/**/*.ts']
+        scriptsDir:     devRoot+'/scripts',
+        jsFiles:       [devRoot+'/scripts/**/*.js'],
+        tsFiles:       [devRoot+'/scripts/**/*.ts']
     };
 
 
@@ -52,7 +52,7 @@ module.exports = function() {
         root:           prodRoot,
         //--------------------
         fontsDir:       prodRoot+'/fonts',
-        htmlFiles:      prodRoot+'/modules',
+        htmlFiles:      prodRoot+'/scripts',
         //--------------------
         stylesDir:      prodRoot+'/styles',
         cssFiles:      [prodRoot+'/styles/**/*.min.css'],
