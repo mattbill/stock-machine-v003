@@ -108,24 +108,28 @@
     - Run python as dev vs prod
     - Switch static dir
 
+2016-11-05
+- Gulp
+    - TypeScript
+    - Watch
+    - Clean up
+
+2016-11-11
+- TypeScript
+
 
 TODO@mattbillard
 
-
-- Review gulp files
 - Upgrade
-    - Angular 1.5 + TypeScript
-    - Reorg files
-        - Modules
-        - Probably move views folder
+    - Angular 1.5
+    - TypeScript
+        ?- Use npm run tsc or gulp typescript?
     - Angular 2
-    - MEAN stack
+- MEAN stack
 - Later
     - Redo calcs
     - Login
-    - A lot of directives should have isolated scopes and inject StocksServ directly
     - Switch back to getting fresh data rather than pulling stock from DB
-    - Research more sources of "open data"
 - Redo design
 
 
