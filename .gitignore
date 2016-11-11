@@ -6,8 +6,8 @@ temp/
 venv/
 
 public/dev/bower_components/
-public/dev/modules/stock-machine/**/*.js
-public/dev/modules/stock-machine/**/*.js.map
+public/dev/scripts/stock-machine/**/*.js
+public/dev/scripts/stock-machine/**/*.js.map
 public/dev/styles/*.css
 public/prod/
 
