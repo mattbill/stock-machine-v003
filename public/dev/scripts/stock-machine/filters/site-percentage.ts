@@ -1,7 +1,7 @@
 declare var angular: any;
 
 //Format number as percent
-angular.module('stockMachineApp').filter('sitePercent', ['$filter', 'UtilsServ', function($filter, UtilsServ){
+angular.module('stockMachineApp').filter('sitePercent', function($filter, UtilsServ){
     'use strict';
 
     return function(val, decimalPlaces) {
@@ -31,4 +31,4 @@ angular.module('stockMachineApp').filter('sitePercent', ['$filter', 'UtilsServ',
 
         return number;
     };
-}]);
+});

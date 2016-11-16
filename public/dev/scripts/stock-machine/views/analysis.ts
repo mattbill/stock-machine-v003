@@ -4,17 +4,10 @@ declare var angular: any;
 angular.module('stockMachineApp').component('analysis', {
     templateUrl: '/scripts/stock-machine/views/analysis.html',
     bindings: {},
-    controller: function($uibModal, StocksServ) {
-        'use strict';
-        var $ctrl = this;
-
-
-        // PRIVATE
-
-
-        // PUBLIC
-
-        var externalUrls = {
+    controller: class {
+        $uibModal: any;
+        StocksServ: any;
+        externalUrls: any = {
             'yahooCharts': function(symbol) {
                 return 'http://finance.yahoo.com/echarts?s='+ symbol;
             },
@@ -23,14 +16,25 @@ angular.module('stockMachineApp').component('analysis', {
             }
         };
 
-        function openExternalUrl(command) {
+
+        // PRIVATE
+
+        constructor($uibModal, StocksServ) {
+            this.$uibModal = $uibModal;
+            this.StocksServ = StocksServ;
+        }
+
+
+        // PUBLIC
+
+        openExternalUrl(command) {
             var url;
-            var symbol = StocksServ.currStock.symbol;
+            var symbol = this.StocksServ.currStock.symbol;
 
             if (symbol) {
                 url =
-                    (typeof $ctrl.externalUrls[command] === 'function') ? $ctrl.externalUrls[command](symbol) :
-                    (typeof $ctrl.externalUrls) ? $ctrl.externalUrls[command]+symbol :
+                    (typeof this.externalUrls[command] === 'function') ? this.externalUrls[command](symbol) :
+                    (typeof this.externalUrls) ? this.externalUrls[command]+symbol :
                     null;
 
                 if (url) {
@@ -39,18 +43,12 @@ angular.module('stockMachineApp').component('analysis', {
             }
         }
 
-        function openRecentStockListModal() {
-            $uibModal.open({
+        openRecentStockListModal() {
+            this.$uibModal.open({
                 animation: true,
                 component: 'recentStockListModal',
                 size: 'lg'
             });
         }
-
-
-        $ctrl.externalUrls = externalUrls;
-        $ctrl.StocksServ = StocksServ;
-        $ctrl.openExternalUrl = openExternalUrl;
-        $ctrl.openRecentStockListModal = openRecentStockListModal;
     }
 });

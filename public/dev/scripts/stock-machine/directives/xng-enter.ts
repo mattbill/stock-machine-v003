@@ -1,7 +1,7 @@
 declare var angular: any;
 
 //CODE FROM: http://eric.sau.pe/angularjs-detect-enter-key-ngenter/
-angular.module('stockMachineApp').directive('xngEnter', [function () {
+angular.module('stockMachineApp').directive('xngEnter', function () {
     'use strict';
 
     return function (scope, element, attrs) {
@@ -15,4 +15,4 @@ angular.module('stockMachineApp').directive('xngEnter', [function () {
             }
         });
     };
-}]);
+});

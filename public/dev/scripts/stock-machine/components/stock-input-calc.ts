@@ -8,14 +8,15 @@ angular.module('stockMachineApp').component('stockInputCalc', {
         readonly: '@'
     },
     templateUrl: '/scripts/stock-machine/components/stock-input-calc.html',
-    controller: function(StocksServ) {
-        var $ctrl = this;
+    controller: class {
+        public StocksServ: any;
 
-        function redoCalcs(key, $event) {
-            $ctrl.StocksServ.redoCalcs(key, $event.target.value);
+        constructor(StocksServ) {
+            this.StocksServ = StocksServ;
         }
 
-        $ctrl.redoCalcs = redoCalcs;
-        $ctrl.StocksServ = StocksServ;
+        redoCalcs(key, $event) {
+            this.StocksServ.redoCalcs(key, $event.target.value);
+        }
     }
 });

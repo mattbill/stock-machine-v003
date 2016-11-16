@@ -1,104 +1,114 @@
 declare var $: any;
 declare var angular: any;
 
-angular.module('stockMachineApp').factory('StocksServ', ['$http', '$log', '$rootScope', '$timeout', 'UtilsServ', function($http, $log, $rootScope, $timeout, UtilsServ) {
-    'use strict';
+angular.module('stockMachineApp').service('StocksServ', class {
+    private $http: any;
+    private $log: any;
+    private $rootScope: any;
+    private $timeout: any;
+    private stocksToAnalyze: any = [];
+
+    public UtilsServ: any;
+    public currStock: any;
+    public stocksInput: string;
+    public stockList = [];
 
 
     // PRIVATE
 
-    var stocksToAnalyze :any = [];
+    constructor($http, $log, $rootScope, $timeout, UtilsServ) {
+        this.$http  = $http;
+        this.$log  = $log;
+        this.$rootScope  = $rootScope;
+        this.$timeout  = $timeout;
+        this.UtilsServ  = UtilsServ;
 
-    function addToStockList(stockObj) {
-        var symbol = stockObj.symbol;
-        stockList.unshift(stockObj);
-        $log.log(symbol+' added to recent stocks');
+        this.loadStocksFromLocalStorage();
+        this.$rootScope.stockList = this.stockList;
+        this.$rootScope.$watchCollection('stockList', () => {
+            this.saveStocksToLocalStorage();
+        });
     }
 
-    function analyzeOneStock(symbol) {
-        $log.log('\nAnalyzing '+symbol);
+    addToStockList(stockObj) {
+        var symbol = stockObj.symbol;
+        this.stockList.unshift(stockObj);
+        this.$log.log(symbol+' added to recent stocks');
+    }
 
-        $http.get('api/stocks/from-database/'+symbol)
-            .success(function(data) {
+    analyzeOneStock(symbol) {
+        this.$log.log('\nAnalyzing '+symbol);
+
+        this.$http.get('api/stocks/from-database/'+symbol)
+            .success((data) => {
                 if (typeof data === 'string' && data.match(/error/gi)) {
-                    $log.error(data);
+                    this.$log.error(data);
                 } else {
-                    $log.log(symbol, data);
-                    addToStockList(data);
-                    loadFromStockList(0);
+                    this.$log.log(symbol, data);
+                    this.addToStockList(data);
+                    this.loadFromStockList(0);
                 }
             })
-            .error(function() {
-                $log.log('ERROR with stock: '+symbol, '\n');
+            .error(() => {
+                this.$log.log('ERROR with stock: '+symbol, '\n');
             })
-            .finally(function(){
-                analyzeStocksArr();
+            .finally(() => {
+                this.analyzeStocksArr();
             });
 
     }
 
-    function analyzeStocksArr() {
-        StocksServ.stocksInput = stocksToAnalyze.join(', ');
+    analyzeStocksArr() {
+        this.stocksInput = this.stocksToAnalyze.join(', ');
 
-        if (stocksToAnalyze.length >= 1) {
-            analyzeOneStock( stocksToAnalyze.shift() );
+        if (this.stocksToAnalyze.length >= 1) {
+            this.analyzeOneStock( this.stocksToAnalyze.shift() );
         } else {
-            $log.log('DONE analyzing all stocks.');
+            this.$log.log('DONE analyzing all stocks.');
         }
     }
 
-    function loadStocksFromLocalStorage() {
-        $log.log('Loading stocks form localStorage');
+    loadStocksFromLocalStorage() {
+        this.$log.log('Loading stocks form localStorage');
         if (localStorage['recentStocks']) {
-            stockList = JSON.parse(localStorage['recentStocks']);
+            this.stockList = JSON.parse(localStorage['recentStocks']);
         }
     }
 
-    function init() {
-        loadStocksFromLocalStorage();
-
-        $rootScope.stockList = stockList;
-        $rootScope.$watchCollection('stockList', function(){
-            saveStocksToLocalStorage();
-        });
-    }
-
-    function saveStocksToLocalStorage() {
-        $log.log('Saving stocks to localStorage\n\n');
-        localStorage['recentStocks'] = JSON.stringify(angular.copy(stockList));
+    saveStocksToLocalStorage() {
+        this.$log.log('Saving stocks to localStorage\n\n');
+        localStorage['recentStocks'] = JSON.stringify(angular.copy(this.stockList));
     }
 
 
     // PUBLIC
 
-    var stockList = [];
-
-    function analyzeStocks() {
-        $log.log('Starting stock $ctrl...');
-        var stockArr :any = StocksServ.stocksInput.toUpperCase().replace(/ /g, '').split(',');
-        stocksToAnalyze = stockArr.filter(function(val) { return val; });
-        analyzeStocksArr();
+    analyzeStocks() {
+        this.$log.log('Starting stock $ctrl...');
+        var stockArr :any = this.stocksInput.toUpperCase().replace(/ /g, '').split(',');
+        this.stocksToAnalyze = stockArr.filter((val) => { return val; });
+        this.analyzeStocksArr();
     }
 
-    function deleteStock(index) {
-        stockList.splice(index, 1);
-        $timeout(function(){
-            loadFromStockList(index);
+    deleteStock(index) {
+        this.stockList.splice(index, 1);
+        this.$timeout(() => {
+            this.loadFromStockList(index);
         });
     }
 
-    function isBadStockMarket(stockMarket) {
+    isBadStockMarket(stockMarket) {
         if (stockMarket) {
             return ( stockMarket.indexOf('OT') >= 0 );
         }
     }
 
-    function loadFromStockList(index) {
-        var currStock = stockList[index];
+    loadFromStockList(index) {
+        var currStock = this.stockList[index];
         if (currStock) {
-            StocksServ.currStock = currStock;
+            this.currStock = currStock;
 
-            $timeout(function(){
+            this.$timeout(() => {
                 var nthChild = index+1;
                 var selector = '#recent-stock-list li:nth-child('+nthChild+') a:last';
                 $(selector).focus();
@@ -106,12 +116,12 @@ angular.module('stockMachineApp').factory('StocksServ', ['$http', '$log', '$root
         }
     }
 
-    function percentageDiscountCssClass(stockObj) {
+    percentageDiscountCssClass(stockObj) {
         var cssClass = '';
         if (stockObj && stockObj.calcs) {
             var percentageDiscount = stockObj.calcs.percentageDiscount;
 
-            if (UtilsServ.isNum(percentageDiscount) === false) {
+            if (this.UtilsServ.isNum(percentageDiscount) === false) {
                 cssClass = 'discount-not-numeric';
             } else if (percentageDiscount < 0) {
                 cssClass = 'negative-discount';
@@ -127,9 +137,9 @@ angular.module('stockMachineApp').factory('StocksServ', ['$http', '$log', '$root
         return cssClass;
     }
 
-    function redoCalcs(field, value) {
-        $log.log('(Re)doing calcs');
-        var currStock = StocksServ.currStock;
+    redoCalcs(field, value) {
+        this.$log.log('(Re)doing calcs');
+        var currStock = this.currStock;
 
         //If not enough info, don't continue
         if (value === '' || currStock.size === 0) {
@@ -142,33 +152,18 @@ angular.module('stockMachineApp').factory('StocksServ', ['$http', '$log', '$root
             stockObj: currStock
         };
 
-        $http({
+        this.$http({
             method: 'POST',
             url: '/api/stocks/redo-calcs/',
             data: data
         })
-        .success(function(data, status, headers, config) {
+        .success((data, status, headers, config) => {
             var stockObj = data;
-            StocksServ.currStock.calcs = stockObj.calcs;
+            this.currStock.calcs = stockObj.calcs;
 
         })
-        .error(function(data, status, headers, config) {
-            $log.log('ERROR: RedoCalcs failed');
+        .error((data, status, headers, config) => {
+            this.$log.log('ERROR: RedoCalcs failed');
         });
     }
-
-
-    init();
-    var StocksServ = {
-        currStock: null,
-        stocksInput: '',
-        stockList: stockList,
-        analyzeStocks: analyzeStocks,
-        deleteStock: deleteStock,
-        isBadStockMarket: isBadStockMarket,
-        loadFromStockList: loadFromStockList,
-        percentageDiscountCssClass: percentageDiscountCssClass,
-        redoCalcs: redoCalcs
-    };
-    return StocksServ;
-}]);
+});

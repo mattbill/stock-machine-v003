@@ -6,12 +6,30 @@ angular.module('stockMachineApp').component('simpleChart', {
         data: '='
     },
     templateUrl: '/scripts/stock-machine/components/simple-chart.html',
-    controller: function($scope, $element) {
-        var $ctrl = this;
+    controller: class {
+        private $scope: any;
+        private $element: any;
 
-        function convert(data) {
+
+        // PRIVATE
+
+        constructor($scope, $element) {
+            this.$scope = $scope;
+            this.$element = $element;
+
+            $scope.$watch('$ctrl.data', (data) => {
+                if (data) {
+                    this.draw(data);
+                }
+            });
+        }
+
+
+        // PUBLIC
+
+        convert(data) {
             var result = [];
-            angular.forEach(data, function(val, key){
+            angular.forEach(data, (val, key) => {
                 var num = val*1;
                 num = (angular.isNumber(num) && !isNaN(num) && num !== null) ? num : null;
                 result.push(num);
@@ -19,8 +37,8 @@ angular.module('stockMachineApp').component('simpleChart', {
             return result;
         }
 
-        function draw(data) {
-            $element.find('.chart').highcharts({
+        draw(data) {
+            this.$element.find('.chart').highcharts({
                 title: {
                     text: '',
                     style: {
@@ -49,7 +67,7 @@ angular.module('stockMachineApp').component('simpleChart', {
                 series: [{
                     connectNulls: true,
                     color: '#777',
-                    data: convert(data)
+                    data: this.convert(data)
                 }],
                 plotOptions: {
                     series: {
@@ -60,11 +78,5 @@ angular.module('stockMachineApp').component('simpleChart', {
 
             $('*[text-anchor="end"]').hide();
         }
-
-        $scope.$watch('$ctrl.data', function(data){
-            if (data) {
-                draw(data);
-            }
-        });
     }
 });

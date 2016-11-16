@@ -3,22 +3,30 @@ declare var angular: any;
 angular.module('stockMachineApp').component('stockMetricsTable', {
     bindings: {},
     templateUrl: '/scripts/stock-machine/components/stock-metrics-table.html',
-    controller: function($scope, StocksServ) {
-        var $ctrl = this;
+    controller: class {
+        private $scope: any;
+        
+        public StocksServ: any;
+        public averages: any = null;
+        public tableData: any = null;
+
 
         // PRIVATE
 
-        function activate() {
-            $scope.$watch('$ctrl.StocksServ.currStock', function() {
-                var currStock = StocksServ.currStock;
+        constructor($scope, StocksServ) {
+            this.$scope = $scope;
+            this.StocksServ = StocksServ;
+
+            this.$scope.$watch('$ctrl.StocksServ.currStock', () => {
+                var currStock = this.StocksServ.currStock;
                 if (!currStock) { return }
 
-                $ctrl.tableData = makeTableData(currStock.nums);
-                $ctrl.averages = makeAverages(currStock.nums);
+                this.tableData = this.makeTableData(currStock.nums);
+                this.averages = this.makeAverages(currStock.nums);
             });
         }
 
-        function makeAverages(currStockNums) {
+        makeAverages(currStockNums) {
             var averages = {
                 roic: currStockNums.roic.numbers.average,
                 bvps: currStockNums.bvps.growths.average,
@@ -29,7 +37,7 @@ angular.module('stockMachineApp').component('stockMetricsTable', {
             return averages;
         }
 
-        function makeTableData(currStockNums) {
+        makeTableData(currStockNums) {
             var yearData = {};
             var metricKeys = [
                 //'roic',
@@ -43,10 +51,10 @@ angular.module('stockMachineApp').component('stockMetricsTable', {
             ];
 
             //Loop through metrics, regrouping metric data by year
-            angular.forEach(metricKeys, function(metricKey){
+            angular.forEach(metricKeys, (metricKey) => {
                 var metricObj = currStockNums[metricKey];
 
-                angular.forEach(metricObj.numbers.arr, function(val, year){
+                angular.forEach(metricObj.numbers.arr, (val, year) => {
                     if (typeof yearData[year] === 'undefined') {
                         yearData[year] = {};
                     }
@@ -57,7 +65,7 @@ angular.module('stockMachineApp').component('stockMetricsTable', {
                 });
 
                 if (metricObj.growths) {
-                    angular.forEach(metricObj.growths.arr, function(val, year){
+                    angular.forEach(metricObj.growths.arr, (val, year) => {
                         if (typeof yearData[year] === 'undefined') {
                             yearData[year] = {};
                         }
@@ -71,7 +79,7 @@ angular.module('stockMachineApp').component('stockMetricsTable', {
 
             //Now turn data into an array, sorted by newest to oldest years
             var tableData = [];
-            angular.forEach(yearData, function(yearObj, year){
+            angular.forEach(yearData, (yearObj, year) => {
                 yearObj.year = year;
                 tableData.unshift(yearObj);
             });
@@ -83,13 +91,5 @@ angular.module('stockMachineApp').component('stockMetricsTable', {
 
             return tableData;
         }
-
-
-        // PUBLIC
-
-        $ctrl.averages = null;
-        $ctrl.tableData = null;
-        $ctrl.StocksServ = StocksServ;
-        activate();
     }
 });

@@ -4,94 +4,90 @@ declare var angular: any;
 angular.module('stockMachineApp').component('automate', {
     templateUrl: '/scripts/stock-machine/views/automate.html',
     bindings: {},
-    controller: function($http) {
-        'use strict';
-        var $ctrl = this;
+    controller: class {
+        NUM_STOCKS_TO_AUTOMATE: number = 500;
+
+        private $http: any;
+        private $log: any;
+        private automationCount: number = null;
+        private automating: boolean = false;
 
 
         // PRIVATE
 
-        var NUM_STOCKS_TO_AUTOMATE = 500,
-            automationCount = null,
-            automating = false;
+        constructor($http, $log) {
+            this.$http = $http;
+            this.$log = $log;
+        }
 
-        function automateNextStock() {
-            automationCount++;
-            console.log(automationCount + ': Automating stock');
+        automateNextStock() {
+            this.automationCount++;
+            this.$log.log(this.automationCount + ': Automating stock');
 
-            $http.get('api/stocks/automate/')
-                .success(function (data, status, headers, config) {
+            this.$http.get('api/stocks/automate/')
+                .success((data, status, headers, config) => {
                     if (typeof data === 'string' && data.match(/error/gi)) {
-                        console.error(data);
+                        this.$log.error(data);
                     } else {
-                        console.log(data);
+                        this.$log.log(data);
                     }
                 })
-                .error(function (data, status, headers, config) {
-                    console.log('ERROR automating stock');
+                .error((data, status, headers, config) => {
+                    this.$log.log('ERROR automating stock');
                 })
-                .finally(function () {
-
+                .finally(() => {
                     //If we are still automating (i.e. hasn't been stopped)
-                    if (automating === true) {
+                    if (this.automating === true) {
 
                         //Automate next stock until we've automated through automationCount
-                        if (automationCount < NUM_STOCKS_TO_AUTOMATE) {
-                            automateNextStock();
+                        if (this.automationCount < this.NUM_STOCKS_TO_AUTOMATE) {
+                            this.automateNextStock();
                         } else {
-                            automating = false;
-                            console.log('DONE automating stocks.\n');
+                            this.automating = false;
+                            this.$log.log('DONE automating stocks.\n');
                         }
                     }
                 });
         }
 
 
-        // PRIVATE
+        // PUBLIC
 
-        function automationStart() {
-            if (automationCount === null || automationCount >= NUM_STOCKS_TO_AUTOMATE) {
-                console.log('\nAutomating (' + NUM_STOCKS_TO_AUTOMATE + ') stocks...');
-                automationCount = 0;
+        automationStart() {
+            if (this.automationCount === null || this.automationCount >= this.NUM_STOCKS_TO_AUTOMATE) {
+                this.$log.log('\nAutomating (' + this.NUM_STOCKS_TO_AUTOMATE + ') stocks...');
+                this.automationCount = 0;
             } else {
-                console.log('Resuming automation...');
+                this.$log.log('Resuming automation...');
             }
-            automating = true;
-            automateNextStock();
+            this.automating = true;
+            this.automateNextStock();
         }
 
-        function automationStop() {
-            automating = false;
-            console.log('Automation stopped');
+        automationStop() {
+            this.automating = false;
+            this.$log.log('Automation stopped');
         }
 
-        function getAutomationCount() {
-            return automationCount;
+        getAutomationCount() {
+            return this.automationCount;
         }
 
-        function getAutomationPercent() {
+        getAutomationPercent() {
             var percent;
-            var count = automationCount;
+            var count = this.automationCount;
             if (count === null) {
                 percent = 0;
             } else {
-                var total = NUM_STOCKS_TO_AUTOMATE;
+                var total = this.NUM_STOCKS_TO_AUTOMATE;
                 percent = count / total * 100;
                 percent = percent.toFixed(1);
             }
             return percent;
         }
 
-        function isAutomating() {
-            return automating;
+        isAutomating() {
+            return this.automating;
         }
-
-
-        $ctrl.NUM_STOCKS_TO_AUTOMATE = NUM_STOCKS_TO_AUTOMATE;
-        $ctrl.automationStart = automationStart;
-        $ctrl.automationStop = automationStop;
-        $ctrl.getAutomationCount = getAutomationCount;
-        $ctrl.getAutomationPercent = getAutomationPercent;
-        $ctrl.isAutomating = isAutomating;
     }
 });

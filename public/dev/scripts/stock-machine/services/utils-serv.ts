@@ -2,13 +2,10 @@ declare var $: any;
 declare var _: any;
 declare var angular: any;
 
-angular.module('stockMachineApp').factory('UtilsServ', [function(){
-    'use strict';
-
-    var NAN = 'NaN';
+angular.module('stockMachineApp').service('UtilsServ', class UtilsServ {
 
     //Return average of all numeric items in an array
-    function avg(arr) {
+    avg(arr) {
         //If is an object, not an array
         if (angular.isObject(arr)) {
             arr = _.values(arr);
@@ -18,7 +15,7 @@ angular.module('stockMachineApp').factory('UtilsServ', [function(){
         var sum = 0;
         var count = 0;
         angular.forEach(arr, function(val){
-            if (isNum(val)) {
+            if (this.isNum(val)) {
                 sum += val;
                 count++;
             }
@@ -28,12 +25,12 @@ angular.module('stockMachineApp').factory('UtilsServ', [function(){
     }
 
     //Checks if is a number
-    function isNum(val) {
+    isNum(val) {
         return $.isNumeric(val);
     }
 
     //Convert value(s) to a number(s). Non-numbers will remain unchanged
-    function toNum(mixed) {
+    toNum(mixed) {
         var self = this;
 
         //If mixed is an array or object, use recursion
@@ -63,7 +60,7 @@ angular.module('stockMachineApp').factory('UtilsServ', [function(){
                 }
 
                 result = parseInt(val);
-                if (isNum(result)) {
+                if (this.isNum(result)) {
                     result = result * multBy;
                 } else {
                     result = val;
@@ -76,7 +73,7 @@ angular.module('stockMachineApp').factory('UtilsServ', [function(){
     }
 
     //Round to 2 decimal places
-    function round(num) {
+    round(num) {
         num = this.toNum(num);
 
         if (this.isNum(num)) {
@@ -85,13 +82,4 @@ angular.module('stockMachineApp').factory('UtilsServ', [function(){
 
         return num;
     }
-
-
-    return {
-        NAN: NAN,
-        avg: avg,
-        isNum: isNum,
-        toNum: toNum,
-        round: round
-    };
-}]);
+});

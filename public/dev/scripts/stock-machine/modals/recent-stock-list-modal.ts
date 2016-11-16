@@ -6,20 +6,27 @@ angular.module('stockMachineApp').component('recentStockListModal', {
     bindings: {
         modalInstance: '<'
     },
-    controller: function(StocksServ) {
-        'use strict';
-        var $ctrl = this;
+    controller: class {
+        private modalInstance: any;
 
-        function modalOk() {
-            $ctrl.modalInstance.close();
+        public StocksServ: any;
+
+
+        // PRIVATE
+
+        constructor(StocksServ) {
+            this.StocksServ = StocksServ;
         }
 
-        function modalCancel() {
-            $ctrl.modalInstance.dismiss('cancel');
+
+        // PUBLIC
+
+        modalOk() {
+            this.modalInstance.close();
         }
 
-        $ctrl.StocksServ = StocksServ;
-        $ctrl.modalOk = modalOk;
-        $ctrl.modalCancel = modalCancel;
+        modalCancel() {
+            this.modalInstance.dismiss('cancel');
+        }
     }
 });

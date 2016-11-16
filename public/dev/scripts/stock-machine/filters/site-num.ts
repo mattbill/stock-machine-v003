@@ -1,7 +1,7 @@
 declare var angular: any;
 
 //Format financial number
-angular.module('stockMachineApp').filter('siteNum', ['$filter', 'UtilsServ', function($filter, UtilsServ){
+angular.module('stockMachineApp').filter('siteNum', function($filter, UtilsServ){
     'use strict';
 
     return function(val, decimalPlaces) {
@@ -40,4 +40,4 @@ angular.module('stockMachineApp').filter('siteNum', ['$filter', 'UtilsServ', fun
 
         return number+suffix;
     };
-}]);
+});

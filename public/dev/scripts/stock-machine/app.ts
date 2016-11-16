@@ -1,7 +1,7 @@
 declare var angular: any;
 
 //Manual bootstrapping
-angular.element(document).ready(function() {
+angular.element(document).ready(() => {
     angular.bootstrap(document, ['stockMachineApp']);
 });
 
