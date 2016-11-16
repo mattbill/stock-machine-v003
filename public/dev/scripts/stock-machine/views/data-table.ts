@@ -40,7 +40,7 @@ angular.module('stockMachineApp').component('datatable', {
             //bugfix: smart-table doesn't like reinitializing the table after an XHR request. Use this and ng-if to destroy/recreate the smart-table
             this.state = 'loading';
 
-            var whereArr = [];
+            let whereArr = [];
             angular.forEach(this.search, (val, key) => {
                 val = val.trim();
                 if (val) {
@@ -56,7 +56,7 @@ angular.module('stockMachineApp').component('datatable', {
             });
 
             //Finish whereCond
-            var whereCond = whereArr.join('  AND  ');
+            let whereCond = whereArr.join('  AND  ');
             this.$log.log('Getting stocks WHERE '+whereCond);
 
             this.$http({

@@ -28,8 +28,8 @@ angular.module('stockMachineApp').component('analysis', {
         // PUBLIC
 
         openExternalUrl(command) {
-            var url;
-            var symbol = this.StocksServ.currStock.symbol;
+            let url;
+            let symbol = this.StocksServ.currStock.symbol;
 
             if (symbol) {
                 url =

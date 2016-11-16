@@ -28,9 +28,9 @@ angular.module('stockMachineApp').component('simpleChart', {
         // PUBLIC
 
         convert(data) {
-            var result = [];
+            let result = [];
             angular.forEach(data, (val, key) => {
-                var num = val*1;
+                let num = val*1;
                 num = (angular.isNumber(num) && !isNaN(num) && num !== null) ? num : null;
                 result.push(num);
             });

@@ -18,7 +18,7 @@ angular.module('stockMachineApp').component('stockMetricsTable', {
             this.StocksServ = StocksServ;
 
             this.$scope.$watch('$ctrl.StocksServ.currStock', () => {
-                var currStock = this.StocksServ.currStock;
+                let currStock = this.StocksServ.currStock;
                 if (!currStock) { return }
 
                 this.tableData = this.makeTableData(currStock.nums);
@@ -27,7 +27,7 @@ angular.module('stockMachineApp').component('stockMetricsTable', {
         }
 
         makeAverages(currStockNums) {
-            var averages = {
+            let averages = {
                 roic: currStockNums.roic.numbers.average,
                 bvps: currStockNums.bvps.growths.average,
                 sales: currStockNums.sales.growths.average,
@@ -38,8 +38,8 @@ angular.module('stockMachineApp').component('stockMetricsTable', {
         }
 
         makeTableData(currStockNums) {
-            var yearData = {};
-            var metricKeys = [
+            let yearData = {};
+            let metricKeys = [
                 //'roic',
                 'bvps',
                 'sales',
@@ -52,7 +52,7 @@ angular.module('stockMachineApp').component('stockMetricsTable', {
 
             //Loop through metrics, regrouping metric data by year
             angular.forEach(metricKeys, (metricKey) => {
-                var metricObj = currStockNums[metricKey];
+                let metricObj = currStockNums[metricKey];
 
                 angular.forEach(metricObj.numbers.arr, (val, year) => {
                     if (typeof yearData[year] === 'undefined') {
@@ -78,7 +78,7 @@ angular.module('stockMachineApp').component('stockMetricsTable', {
             });
 
             //Now turn data into an array, sorted by newest to oldest years
-            var tableData = [];
+            let tableData = [];
             angular.forEach(yearData, (yearObj, year) => {
                 yearObj.year = year;
                 tableData.unshift(yearObj);

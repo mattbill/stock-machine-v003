@@ -3,6 +3,7 @@ declare var _: any;
 declare var angular: any;
 
 angular.module('stockMachineApp').service('UtilsServ', class UtilsServ {
+    public NAN: string = 'NaN';
 
     //Return average of all numeric items in an array
     avg(arr) {
@@ -12,8 +13,8 @@ angular.module('stockMachineApp').service('UtilsServ', class UtilsServ {
         }
 
         //Manually calculate the average, excluding values that are not numbers (e.g. null, NaN, undefined, etc)
-        var sum = 0;
-        var count = 0;
+        let sum = 0;
+        let count = 0;
         angular.forEach(arr, function(val){
             if (this.isNum(val)) {
                 sum += val;
@@ -31,12 +32,12 @@ angular.module('stockMachineApp').service('UtilsServ', class UtilsServ {
 
     //Convert value(s) to a number(s). Non-numbers will remain unchanged
     toNum(mixed) {
-        var self = this;
+        let self = this;
 
         //If mixed is an array or object, use recursion
         if (angular.isArray(mixed) || angular.isObject(mixed)) {
             angular.forEach(mixed, function(val, key){
-                var result = self.toNum(val);
+                let result = self.toNum(val);
                 if (self.isNum(result)) {
                     mixed[key] = result;
                 }
@@ -45,9 +46,9 @@ angular.module('stockMachineApp').service('UtilsServ', class UtilsServ {
             return mixed;
 
         } else {
-            var val = mixed;
-            var multBy = 1;
-            var result;
+            let val = mixed;
+            let multBy = 1;
+            let result;
 
             try {
                 if ((/bil/i).test(val)) {

@@ -14,8 +14,8 @@ angular.module('stockMachineApp').filter('siteNum', function($filter, UtilsServ)
         decimalPlaces = (decimalPlaces) ? decimalPlaces : 2;
 
         //Vars
-        var number;
-        var suffix = '';
+        let number;
+        let suffix = '';
 
         //Try formatting as a number
         number = UtilsServ.toNum(val);

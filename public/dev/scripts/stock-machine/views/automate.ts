@@ -5,7 +5,7 @@ angular.module('stockMachineApp').component('automate', {
     templateUrl: '/scripts/stock-machine/views/automate.html',
     bindings: {},
     controller: class {
-        NUM_STOCKS_TO_AUTOMATE: number = 500;
+        public NUM_STOCKS_TO_AUTOMATE: number = 500;
 
         private $http: any;
         private $log: any;
@@ -74,12 +74,12 @@ angular.module('stockMachineApp').component('automate', {
         }
 
         getAutomationPercent() {
-            var percent;
-            var count = this.automationCount;
+            let percent;
+            let count = this.automationCount;
             if (count === null) {
                 percent = 0;
             } else {
-                var total = this.NUM_STOCKS_TO_AUTOMATE;
+                let total = this.NUM_STOCKS_TO_AUTOMATE;
                 percent = count / total * 100;
                 percent = percent.toFixed(1);
             }

@@ -31,7 +31,7 @@ angular.module('stockMachineApp').service('StocksServ', class {
     }
 
     addToStockList(stockObj) {
-        var symbol = stockObj.symbol;
+        let symbol = stockObj.symbol;
         this.stockList.unshift(stockObj);
         this.$log.log(symbol+' added to recent stocks');
     }
@@ -85,7 +85,7 @@ angular.module('stockMachineApp').service('StocksServ', class {
 
     analyzeStocks() {
         this.$log.log('Starting stock $ctrl...');
-        var stockArr :any = this.stocksInput.toUpperCase().replace(/ /g, '').split(',');
+        let stockArr :any = this.stocksInput.toUpperCase().replace(/ /g, '').split(',');
         this.stocksToAnalyze = stockArr.filter((val) => { return val; });
         this.analyzeStocksArr();
     }
@@ -104,22 +104,22 @@ angular.module('stockMachineApp').service('StocksServ', class {
     }
 
     loadFromStockList(index) {
-        var currStock = this.stockList[index];
+        let currStock = this.stockList[index];
         if (currStock) {
             this.currStock = currStock;
 
             this.$timeout(() => {
-                var nthChild = index+1;
-                var selector = '#recent-stock-list li:nth-child('+nthChild+') a:last';
+                let nthChild = index+1;
+                let selector = '#recent-stock-list li:nth-child('+nthChild+') a:last';
                 $(selector).focus();
             });
         }
     }
 
     percentageDiscountCssClass(stockObj) {
-        var cssClass = '';
+        let cssClass = '';
         if (stockObj && stockObj.calcs) {
-            var percentageDiscount = stockObj.calcs.percentageDiscount;
+            let percentageDiscount = stockObj.calcs.percentageDiscount;
 
             if (this.UtilsServ.isNum(percentageDiscount) === false) {
                 cssClass = 'discount-not-numeric';
@@ -139,14 +139,14 @@ angular.module('stockMachineApp').service('StocksServ', class {
 
     redoCalcs(field, value) {
         this.$log.log('(Re)doing calcs');
-        var currStock = this.currStock;
+        let currStock = this.currStock;
 
         //If not enough info, don't continue
         if (value === '' || currStock.size === 0) {
             return;
         }
 
-        var data = {
+        let data = {
             field: field,
             value: value,
             stockObj: currStock
@@ -158,7 +158,7 @@ angular.module('stockMachineApp').service('StocksServ', class {
             data: data
         })
         .success((data, status, headers, config) => {
-            var stockObj = data;
+            let stockObj = data;
             this.currStock.calcs = stockObj.calcs;
 
         })

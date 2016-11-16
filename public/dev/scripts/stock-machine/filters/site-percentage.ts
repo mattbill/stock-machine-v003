@@ -14,7 +14,7 @@ angular.module('stockMachineApp').filter('sitePercent', function($filter, UtilsS
         decimalPlaces = (decimalPlaces) ? decimalPlaces : 1;
 
         //Vars
-        var number;
+        let number;
 
         //Try converting to number
         number = UtilsServ.toNum(val);

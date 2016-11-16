@@ -10,8 +10,8 @@ angular.module('stockMachineApp').filter('redGreenNum', function(UtilsServ){
             return '';
         }
 
-        var number;
-        var cssClass = '';
+        let number;
+        let cssClass = '';
 
         //Try converting to a number and then checking what color it should be
         number = UtilsServ.toNum(val);
