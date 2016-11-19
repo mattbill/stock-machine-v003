@@ -125,17 +125,13 @@
 2016-11-15
 - TypeScript
     - Convert to classes
+    - Swap var -> let
 
 
 TODO@mattbillard
 
-- Upgrade
-    - Angular 1.5
-    - TypeScript
-        - Swap var -> let
-        ?- Use npm run tsc or gulp typescript?
-    - Angular 2
 - MEAN stack
+- Angular 2
 - Later
     - Redo calcs
     - Login
