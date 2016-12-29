@@ -1,8 +1,8 @@
 {
   "name": "stock-machine-v003",
   "version": "3.0.0",
-  "description": " ",
-  "main": "index.js",
+  "description": "Stock Machine hobby project built with Python, Flask, and AngularJS",
+  "main": "",
   "dependencies": {
     "bower": "^1.7.9"
   },
@@ -32,7 +32,7 @@
     "type": "git",
     "url": "git+https://github.com/mattbill/stock-machine-v003.git"
   },
-  "author": "mattbill",
+  "author": "mattbillard",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mattbill/stock-machine-v003/issues"
